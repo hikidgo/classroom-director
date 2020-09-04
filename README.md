@@ -1,2 +1,2 @@
 # classroom-director
-Source code for classroom-director
+Source code for Classroom Director

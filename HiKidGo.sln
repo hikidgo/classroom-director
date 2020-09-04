@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiKidGo.ClassroomDirector.Web", "HiKidGo.ClassroomDirector.Web\HiKidGo.ClassroomDirector.Web.csproj", "{961F8DBB-327D-441D-A34A-BA9443F27D0D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiKidGo.ClassroomDirector.Shared", "HiKidGo.ClassroomDirector.Shared\HiKidGo.ClassroomDirector.Shared.csproj", "{98A92A60-7798-4379-9D93-299E9948F8C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{FF8A2E1D-1270-4E5D-B5BB-50D878964D13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{E5534F40-75ED-4F4E-811F-0E5B5D2E4A6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiKidGo.ClassroomDirectory.Windows.Service", "HiKidGo.ClassroomDirectory.Windows.Service\HiKidGo.ClassroomDirectory.Windows.Service.csproj", "{4FD57971-DBFF-45BB-BDFD-D5B13BCB50D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macOS", "macOS", "{07ED5AE7-B10B-4AD3-988D-0C5CF1B3FA6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevOps", "DevOps", "{89774AE9-6621-40A8-A322-2DE01F7B7799}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		azure-pipelines.yml = azure-pipelines.yml
+		build_nuget.config = build_nuget.config
+		docker-compose.dcproj = docker-compose.dcproj
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.yml = docker-compose.yml
+		ecr-docker-build-push.bat = ecr-docker-build-push.bat
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{961F8DBB-327D-441D-A34A-BA9443F27D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961F8DBB-327D-441D-A34A-BA9443F27D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961F8DBB-327D-441D-A34A-BA9443F27D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961F8DBB-327D-441D-A34A-BA9443F27D0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98A92A60-7798-4379-9D93-299E9948F8C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98A92A60-7798-4379-9D93-299E9948F8C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98A92A60-7798-4379-9D93-299E9948F8C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98A92A60-7798-4379-9D93-299E9948F8C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FD57971-DBFF-45BB-BDFD-D5B13BCB50D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FD57971-DBFF-45BB-BDFD-D5B13BCB50D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FD57971-DBFF-45BB-BDFD-D5B13BCB50D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FD57971-DBFF-45BB-BDFD-D5B13BCB50D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E5534F40-75ED-4F4E-811F-0E5B5D2E4A6A} = {FF8A2E1D-1270-4E5D-B5BB-50D878964D13}
+		{4FD57971-DBFF-45BB-BDFD-D5B13BCB50D2} = {E5534F40-75ED-4F4E-811F-0E5B5D2E4A6A}
+		{07ED5AE7-B10B-4AD3-988D-0C5CF1B3FA6F} = {FF8A2E1D-1270-4E5D-B5BB-50D878964D13}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {213B2646-7EF2-4CD1-9EEE-02C5EB35A5DE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  hikidgo.classroomdirector.web:
+    image: ${DOCKER_REGISTRY-}hikidgoclassroomweb
+    build:
+      context: .
+      dockerfile: HiKidGo.ClassroomDirector.Web/Dockerfile
+    ports: 
+    - 32750:80
+    volumes:
+    - C:\temp\hikidgo\docker:/temp
+    environment:
+    - HOST=http://localhost:32750
+    - INTERNALHOST=http://localhost:80
+    - ROOT_DIR=/temp/
+    - ASPNETCORE_URLS=http://*:80
+    - ASPNETCORE_ENVIRONMENT=Production
