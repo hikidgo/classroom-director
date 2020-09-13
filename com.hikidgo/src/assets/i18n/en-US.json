@@ -1,0 +1,16 @@
+{
+    "APPNAME":"Hi, kid. Go!",
+    "AMERICAN_ENGLISH": "English",
+    "AMERICAN_SPANISH": "Español",
+    "HI": "Hi",
+    "HI_KID_GO" : "Hi, kid. Go!",
+    "SIGN_OUT": "Sign out",
+    "LANGUAGE": "Language",
+    "SELECT_CLASSROOM_PROVIDER": "What system does your classroom use?",
+    "GOOGLE_CLASSROOM": "Google Classrooms",
+    "SCHEDULES": "Schedules",
+    "SWITCH_SYSTEMS" : "Switch Classroom System",
+    "YES" : "Yes",
+    "NO" : "No",
+    "REDIRECTING" : "Redirecting..."
+}

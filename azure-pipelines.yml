@@ -11,16 +11,12 @@ steps:
   displayName: 'Install .Net Core SDK'
   inputs:
     packageType: sdk
-    version: '3.1.201'
+    version: '3.1.401'
 
 - script: |
     sed -i 's/PERSONAL_ACCESS_TOKEN/$(system.AccessToken)/g' build_nuget.config
-
     dotnet restore --configfile build_nuget.config
-    
     dotnet build --configuration $(buildConfiguration)
-    dotnet test HiKidGo.ClassroomDirector.Services.Tests --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:Threshold=$(codeCoverageThreshold) /p:ThresholdType=line --logger trx
-
     dotnet publish $(projectName)/$(projectName).csproj --configuration $(buildConfiguration) --runtime win-x64
     
     rm "$(projectName)/bin/Release/netcoreapp3.1/win-x64/publish/web.config"

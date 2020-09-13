@@ -1,0 +1,55 @@
+<div class="app-content">
+	<mat-sidenav-container fullscreen autosize>
+		<mat-sidenav #start [mode]="sidenavMode" class="site-sidenav">
+			<header class="nav-header">
+				<!-- <a ng-href="/" href="/">
+					<img src="assets/img/logo.png" alt="Hi, kid. Go!" />
+				</a> -->
+				<h3 *ngIf="userContext != null">
+					{{ 'HI' | translate }}, {{userContext.user.profile.given_name}}
+				</h3>
+			</header>
+			<mat-nav-list class="nav-links">
+
+				<a mat-list-item [routerLink]="['/google']"
+					routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+					(click)="closeSidenav()"><mat-icon>calendar_today</mat-icon>{{ 'SCHEDULES' | translate }}</a>
+
+			</mat-nav-list>
+			<div class="copyright">© 2020 Hi, kid. Go!</div>
+		</mat-sidenav>
+
+		<mat-toolbar class="toolbar">
+			<!-- <button *ngIf="!menuButtonDisabled" mat-icon-button class="btn-main" (click)="openSidenav()">
+				<img style="width:35px;" src="assets/img/logo.png" alt="" />
+			</button> -->
+			<button *ngIf="!menuButtonDisabled" mat-icon-button class="btn-main" (click)="openSidenav()">
+				<mat-icon>menu</mat-icon>
+			</button>
+			<span style="overflow:hidden;">
+				<ng-container>{{ 'GOOGLE_CLASSROOM' | translate }}</ng-container>
+			</span>
+			<span class="flex">
+
+			</span>
+			<button mat-icon-button [matMenuTriggerFor]="menu">
+				<mat-icon>more_vert</mat-icon>
+			</button>
+			<mat-menu x-position="before" #menu="matMenu">
+				<button routerLink="/" mat-menu-item> {{ 'SWITCH_SYSTEMS' | translate }} </button>
+				<button mat-menu-item [matMenuTriggerFor]="langs"> {{ 'LANGUAGE' | translate }} ({{translate.currentLang}})</button>
+				<button *ngIf="userContext != null" (click)="logout()" mat-menu-item>  {{ 'SIGN_OUT' | translate }} </button>
+				<div style="min-width:200px"></div>
+			</mat-menu>
+			<mat-menu #langs="matMenu">
+				<button mat-menu-item (click)="lang('en-US')">{{ 'AMERICAN_ENGLISH' | translate }} (en-US)</button>
+				<button mat-menu-item (click)="lang('es-US')">{{ 'AMERICAN_SPANISH' | translate }} (es-US)</button>
+			</mat-menu>
+		</mat-toolbar>
+		<main class="sidenav-content">
+			<div class="router-outlet">
+				<router-outlet></router-outlet>
+			</div>
+		</main>
+	</mat-sidenav-container>
+</div>

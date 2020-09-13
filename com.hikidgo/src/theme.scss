@@ -1,0 +1,231 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+// #2ebda5
+// #2e8dbd blue 
+// #2ebd5e green
+// #bd2e46 red
+// #2e46bd blue purple
+// #a52ebd purple
+
+$mat-flexteal: (
+    50 : #e6f7f4,
+    100 : #c0ebe4,
+    200 : #97ded2,
+    300 : #6dd1c0,
+    400 : #4dc7b3,
+    500 : #2ebda5,
+    600 : #29b79d,
+    700 : #23ae93,
+    800 : #1da68a,
+    900 : #129879,
+    A100 : #cafff1,
+    A200 : #97ffe4,
+    A400 : #64ffd7,
+    A700 : #4bffd1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$mat-flexblue: (
+    50 : #e6f1f7,
+    100 : #c0ddeb,
+    200 : #97c6de,
+    300 : #6dafd1,
+    400 : #4d9ec7,
+    500 : #2e8dbd,
+    600 : #2985b7,
+    700 : #237aae,
+    800 : #1d70a6,
+    900 : #125d98,
+    A100 : #cae6ff,
+    A200 : #97cdff,
+    A400 : #64b5ff,
+    A700 : #4ba9ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$mat-flexgreen: (
+    50 : #e6f7ec,
+    100 : #c0ebcf,
+    200 : #97deaf,
+    300 : #6dd18e,
+    400 : #4dc776,
+    500 : #2ebd5e,
+    600 : #29b756,
+    700 : #23ae4c,
+    800 : #1da642,
+    900 : #129831,
+    A100 : #caffd5,
+    A200 : #97ffac,
+    A400 : #64ff83,
+    A700 : #4bff6e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$mat-flexred: (
+    50 : #f7e6e9,
+    100 : #ebc0c8,
+    200 : #de97a3,
+    300 : #d16d7e,
+    400 : #c74d62,
+    500 : #bd2e46,
+    600 : #b7293f,
+    700 : #ae2337,
+    800 : #a61d2f,
+    900 : #981220,
+    A100 : #ffcacf,
+    A200 : #ff97a0,
+    A400 : #ff6471,
+    A700 : #ff4b5a,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$mat-flexbluepurple: (
+    50 : #e6e9f7,
+    100 : #c0c8eb,
+    200 : #97a3de,
+    300 : #6d7ed1,
+    400 : #4d62c7,
+    500 : #2e46bd,
+    600 : #293fb7,
+    700 : #2337ae,
+    800 : #1d2fa6,
+    900 : #122098,
+    A100 : #cacfff,
+    A200 : #97a0ff,
+    A400 : #6471ff,
+    A700 : #4b5aff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$mat-flexpurple: (
+    50 : #f4e6f7,
+    100 : #e4c0eb,
+    200 : #d297de,
+    300 : #c06dd1,
+    400 : #b34dc7,
+    500 : #a52ebd,
+    600 : #9d29b7,
+    700 : #9323ae,
+    800 : #8a1da6,
+    900 : #791298,
+    A100 : #f1caff,
+    A200 : #e497ff,
+    A400 : #d764ff,
+    A700 : #d14bff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$flex-app-primary: mat-palette($mat-flexteal);
+$flex-app-accent:  mat-palette($mat-flexblue, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$flex-app-warn:    mat-palette($mat-flexred);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$flex-app-theme: mat-light-theme($flex-app-primary, $flex-app-accent, $flex-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($flex-app-theme);
+

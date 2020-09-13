@@ -1,0 +1,41 @@
+.btn-main{
+    margin-right:10px;
+}
+
+:host ::ng-deep mat-toolbar mat-form-field.mat-form-field-type-mat-select.mat-form-field-should-float mat-label.ng-star-inserted {
+    visibility: collapse;
+}
+
+:host ::ng-deep mat-toolbar mat-form-field {
+    font-size: .8em;
+    font-weight: 300;
+}
+
+:host ::ng-deep mat-expansion-panel {
+  background-color: #404040;
+}
+
+:host ::ng-deep mat-expansion-panel-header {
+  padding: 0px 16px;
+}
+
+:host ::ng-deep mat-sidenav .mat-expansion-panel-header-title {
+  color: white;
+  font-size: 16px;
+}
+
+:host ::ng-deep mat-sidenav .mat-expansion-panel-body {
+    padding: 0 0 0 0; 
+}
+
+:host ::ng-deep mat-sidenav .mat-expansion-indicator::after {
+  color: white;
+}
+
+a.list {
+  padding: 0px 16px 0px 24px;
+}
+
+div.google mat-form-field{
+  width: 250px;
+}

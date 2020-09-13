@@ -1,0 +1,38 @@
+# Node.js with Angular
+# Build a Node.js application that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/vsts/pipelines/languages/javascript
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.15.3'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
+    rm "dist/portal/appsettings.json"
+    mv "dist/portal/appsettings.environment.json" "dist/portal/appsettings.json"
+  displayName: 'npm install and build'
+  
+# copy output to build artifacts
+
+- task: CopyFiles@2
+  displayName: Copy Files
+  inputs:
+    SourceFolder: 'dist/portal'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/app'
+
+# publish build artifacts
+
+- task: PublishBuildArtifacts@1
+  displayName: "Publish artifacts"
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/app'
+    ArtifactName: app
+    publishLocation: Container

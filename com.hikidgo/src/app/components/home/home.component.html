@@ -1,0 +1,15 @@
+<div class="page">
+  <div fxLayout="row" fxLayoutAlign="center top">
+    <div fxFlex="75%" fxFlex.xs="100%">
+      <mat-card style="max-width: 400px;margin: auto;margin-bottom: 20px;">
+        <mat-card-title>{{ 'SELECT_CLASSROOM_PROVIDER' | translate }}</mat-card-title>
+        <mat-nav-list>
+          <a mat-list-item [routerLink]="['google']">
+            <span matLine>Google Classrooms</span>
+            <mat-icon>keyboard_arrow_right</mat-icon>
+          </a>
+        </mat-nav-list>
+      </mat-card>
+    </div>
+  </div>
+</div>

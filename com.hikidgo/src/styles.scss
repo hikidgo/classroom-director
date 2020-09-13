@@ -1,0 +1,564 @@
+@import "./theme.scss";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+*, *::before, *::after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.mat-sidenav.site-sidenav{
+    background-color: #404040;
+}
+
+body{
+  margin:0px;
+}
+
+/** Scroll Fix **/
+
+div.mat-sidenav-content{
+    overflow: hidden;
+}
+
+mat-toolbar.toolbar{
+    position: absolute;
+    top:0px;
+    z-index: 1000;
+}
+
+div.router-outlet{
+    overflow: auto;
+    height:100%;
+}
+
+main.sidenav-content {
+    display: block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding-top:64px;
+}
+
+/** Scroll Fix **/
+
+span.flex{
+     flex: 1 1 auto;
+     text-align: center;
+}
+
+.site-sidenav > * {
+    min-width: 200px;
+}
+
+.nav-header {
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.nav-header a {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+    text-align: center;
+    border-bottom: medium none;
+    text-decoration: none;
+}
+
+.nav-header a:focus {
+    outline: medium none;
+}
+
+.nav-header img {
+    display: block;
+    width: 80%;
+}
+
+.nav-header h3 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+.mat-nav-list.nav-links .mat-list-item .mat-list-item-content {
+    padding:0px;
+}
+
+.mat-nav-list.nav-links{
+    padding-top: 0;
+}
+
+.mat-nav-list.nav-links .mat-list-item:hover a,
+.mat-nav-list.nav-links .mat-list-item:hover button {
+  color:#2EBDA5;
+}
+
+.mat-nav-list.nav-links a,
+.mat-nav-list.nav-links button  {
+    color:#fff;
+    text-decoration: none;
+    text-transform: none;
+    display: flex;
+    flex-direction: row; 
+    font-size: 16px;
+    height: 48px;
+    font-weight: 400;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 0;
+    align-items: flex-start;
+    text-align: left;    
+    vertical-align: baseline;
+    white-space: nowrap;
+    position: relative;
+    background: transparent none repeat scroll 0 0;
+    border: medium none;
+    cursor: pointer;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    line-height: 48px;
+    min-width: 88px;
+    outline: medium none;
+    text-transform: none;
+    overflow: visible;
+    padding: 0 16px;   
+    margin: 0;
+}
+
+.mat-nav-list.nav-links a:hover,
+.mat-nav-list.nav-links button:hover {
+    text-decoration: none;
+    color:#2EBDA5;
+    background:whitesmoke;
+}
+
+.mat-nav-list.nav-links a span,
+.mat-nav-list.nav-links button span {
+    display: block;
+    overflow: hidden;
+    padding:0;
+    margin:0;
+}
+
+.mat-nav-list.nav-links a.active, 
+.mat-nav-list.nav-links button.active,
+button.active, 
+a.active{
+    background: white;
+    color: #2EBDA5;
+}
+
+.app-loading {
+    opacity: 0;
+    background-color:#404040;
+    transition: opacity .8s ease-in-out;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color:white;
+    text-align: center;
+    padding-top:100px;
+}
+
+.app-loading h1{
+    margin-top: 30px;
+}
+
+/* .loading screen is visible when app is not bootstraped yet, .my-app is empty */
+app-root:empty + .loading {
+    opacity: 1;
+    z-index: 100;
+}
+
+.spinner{
+    text-align: center;
+}
+
+.spinner mat-spinner{
+    margin:auto;
+}
+
+mat-spinner.button{
+    float:left;
+    position: absolute;
+    top:6px;
+}
+
+.left{
+    float: left;
+}
+
+.valign-center-text {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+/* Begin fix for scrolling inside router-outlet, basically, the margin was set to -15px, which causes scroll bars */
+.router-outlet .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+@media (min-width: 576px){
+    .router-outlet .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+
+@media (min-width: 992px){
+    .router-outlet .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+@media (min-width: 768px){
+    .router-outlet .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+/* End fix for scrolling inside router-outlet, basically, the margin was set to -15px, which causes scroll bars */
+.page{
+    padding-top:20px;
+    padding-bottom:40px;
+}
+
+@media (max-width: 480px) {
+    .page .container{
+        padding:0px;
+        margin:0px;
+    }
+    .xs-nopadding {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+.margin-top-2{
+    margin-top: 2px;
+}
+
+.margin-top-5{
+    margin-top: 5px;
+}
+
+.margin-top-10{
+    margin-top: 10px;
+}
+
+.margin-top-20{
+    margin-top: 20px;
+}
+
+.margin-bottom-2{
+    margin-bottom: 2px;
+}
+
+.margin-bottom-5{
+    margin-bottom: 5px;
+}
+
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+
+.margin-bottom-20{
+    margin-bottom: 20px;
+}
+
+
+@media only screen and (min-width : 960px) {
+    .mat-margin-top-none {
+        margin-top: 0px;
+    }
+}
+
+.app-action {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.app-action a.add{
+    background-color: #12BC32;
+    color:white;
+}
+
+button.save {
+    color:white;
+    min-width: 175px;
+}
+
+.exception{
+    white-space: pre-wrap;
+}
+
+/* Fix for toggle button */
+.mat-button-toggle-label{
+    margin-bottom: 0;
+}
+
+mat-button-toggle.positive.mat-button-toggle-checked .mat-button-toggle-label-content{
+    background-color:#1285bf;
+    color:white;
+}
+
+mat-button-toggle.negative.mat-button-toggle-checked .mat-button-toggle-label-content{
+    background-color:#c0c0c0;
+    
+}
+
+.recaptcha-center > div > div {
+    margin: 0 auto;
+}
+
+mat-option span.subtitle{
+    display: block;
+    position: absolute;
+    font-size: 12px;
+    left: 30px;
+    top: 16px;
+    color: #82B7AE;
+}
+
+.copyright {
+  color:white;
+  font-weight: 300;
+  position: fixed;
+  bottom: 3px;
+  left: 20px;
+  z-index: 1;
+  font-size: 8pt;
+}
+
+/** Padding **/
+
+.padding-10{
+    padding: 10px;
+}
+
+/** Button **/
+
+button.spread {
+    width:100%;
+}
+
+/** Selector **/
+
+.selector.mat-card,
+.selector{
+    padding:3px;
+}
+
+.selector.mat-card a,
+.selector a{
+    color:black;
+    text-decoration: none;
+}
+
+.selector.mat-card a figure span,
+.selector a figure span {
+    color: #ffffff;
+    font-size: 1.5rem;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    border-radius: 4px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    background: rgba(0,0,0,.5);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    padding:5px;
+    font-weight: 400;
+    transition: all 0.8s ease-in-out 0s;
+}
+
+.selector.mat-card a:hover figure span,
+.selector a:hover figure span {
+    font-size:1.7rem;
+}
+
+.selector.mat-card a figure span.spread,
+.selector a figure span.spread{
+    display: block;
+    border-radius: 0px;
+    width:100%;
+}
+
+.selector.mat-card a figure img,
+.selector a figure img{
+    width:100%;
+}
+
+.selector.mat-card:hover a figure img,
+.selector:hover a figure img  {  
+    transform: scale(1.2) rotate(2deg);
+    transition: all 0.8s ease-in-out 0s;
+}
+
+.selector.mat-card a figure,
+.selector a figure {
+    margin:0px;
+    padding:0px;
+    position: relative;
+}
+
+.selector.mat-card a figure,
+.selector a figure {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.selector.mat-card a figure,
+.selector a figure {
+    overflow: hidden;
+}
+
+.selector.mat-card a h4,
+.selector a h4{
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin:5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    color:black;
+    display:block;
+    width:100%;
+    text-decoration: none;
+    background: transparent;
+    border: 0px;
+}
+
+.selector.mat-card a:hover h4,
+.selector a:hover h4{
+    text-decoration: none;
+}
+
+.selector .warn{
+    position: absolute;
+    background: rgba(255,0,0,.8);
+    padding:3px;
+    bottom: 0px;
+    font-size: .7rem; 
+    color:white;
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+    z-index: 101;
+}
+
+.selector div.actions{
+    position: absolute;
+    bottom:6px;
+    right:6px;
+}
+
+.selector div.actions button{
+    background: white;
+    color:#273469;
+}
+
+.selector div.actions button:hover{
+    background: #b3d4fc;
+}
+
+.selector div.actions button.active {
+    background-color: #2EBDA5;
+    color:white;
+}
+
+/** End Selector **/
+
+/** Alerts **/
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  /**border-radius: 4px;**/
+}
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert .alert-link {
+  font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+.alert > p + p {
+  margin-top: 5px;
+}
+.alert-dismissable,
+.alert-dismissible {
+  padding-right: 35px;
+}
+.alert-dismissable .close,
+.alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #3c763d;
+}
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+.alert-success .alert-link {
+  color: #2b542c;
+}
+.alert-info {
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #31708f;
+}
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+.alert-info .alert-link {
+  color: #245269;
+}
+.alert-warning {
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+  color: #8a6d3b;
+}
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+.alert-warning .alert-link {
+  color: #66512c;
+}
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+}
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+.alert-danger .alert-link {
+  color: #843534;
+}
+
+/** End Alerts **/

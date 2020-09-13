@@ -1,0 +1,26 @@
+<div class="app-content">
+	<mat-toolbar>
+		<span style="overflow:hidden;">
+			<ng-container></ng-container>
+		</span>
+		<span class="flex">
+
+		</span>
+		<button mat-icon-button [matMenuTriggerFor]="menu">
+			<mat-icon>more_vert</mat-icon>
+		</button>
+		<mat-menu x-position="before" #menu="matMenu">
+			<button mat-menu-item [matMenuTriggerFor]="langs"> {{ 'LANGUAGE' | translate }} ({{translate.currentLang}})</button>
+			<div style="min-width:200px"></div>
+		</mat-menu>
+		<mat-menu #langs="matMenu">
+			<button mat-menu-item (click)="lang('en-US')">{{ 'AMERICAN_ENGLISH' | translate }} (en-US)</button>
+			<button mat-menu-item (click)="lang('es-US')">{{ 'AMERICAN_SPANISH' | translate }} (es-US)</button>
+		</mat-menu>
+	</mat-toolbar>
+	<main class="sidenav-content">
+		<div class="router-outlet">
+			<router-outlet></router-outlet>
+		</div>
+	</main>
+</div>

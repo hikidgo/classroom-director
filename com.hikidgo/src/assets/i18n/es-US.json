@@ -1,0 +1,16 @@
+{
+    "APPNAME":"Hola chico ¡Vamos!",
+    "AMERICAN_ENGLISH": "English",
+    "AMERICAN_SPANISH": "Español",
+    "HI_KID_GO" : "Hola chico ¡Vamos!",
+    "HI": "Hola",
+    "SIGN_OUT": "Desconectar",
+    "LANGUAGE": "Idioma",
+    "SELECT_CLASSROOM_PROVIDER": "¿Qué sistema usa su salón de clases?",
+    "GOOGLE_CLASSROOM": "Aulas de Google",
+    "SCHEDULES": "Horarios",
+    "SWITCH_SYSTEMS" : "Cambiar sistema de aula",
+    "YES" : "Si",
+    "NO" : "No",
+    "REDIRECTING" : "Redirigiendo..."
+}

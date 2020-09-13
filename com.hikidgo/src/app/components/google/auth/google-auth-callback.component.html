@@ -1,0 +1,12 @@
+<div class="page">
+	<div fxLayout="row" fxLayoutAlign="center top">
+		<div fxFlex="75%" fxFlex.xs="100%">
+			<mat-card *ngIf="user != null">
+				<div>@{{user.profile.preferred_username}}, {{ 'YOU_ARE_SIGNED_IN' | translate }}</div>
+				<div class=" margin-top-20">
+					<mat-spinner diameter="20" class="left"></mat-spinner>&nbsp;&nbsp; {{ 'REDIRECTING' | translate }}
+				</div>
+			</mat-card>
+		</div>
+	</div>
+</div>
