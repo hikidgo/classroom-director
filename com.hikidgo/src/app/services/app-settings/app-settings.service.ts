@@ -58,7 +58,7 @@ export class AppSettingsConfiguration {
         redirect_uri : `${window.location.origin}/google/auth-callback`,
         post_logout_redirect_uri: `${window.location.origin}/google/logout-callback`,
         response_type: "id_token token",
-        scope: `openid email profile https://www.googleapis.com/auth/classroom.courses.readonly https://www.googleapis.com/auth/classroom.coursework.me.readonly`,
+        scope: `openid email profile https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/classroom.courses.readonly https://www.googleapis.com/auth/classroom.coursework.me.readonly`,
     };
 }
 

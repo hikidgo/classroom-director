@@ -5,6 +5,7 @@ import { GoogleSchedulesComponent } from './components/google/schedules/google-s
 import { GoogleAuthComponent } from './components/google/auth/google-auth.component';
 import { GoogleAuthCallbackComponent } from './components/google/auth/google-auth-callback.component';
 import { GoogleGuardedRouteService } from './services/google/authorization/google-guarded-route.service';
+import { GoogleWeeklyScheduleComponent } from './components/google/schedules/google-weekly-schedule.component';
 
 import { BaseComponent } from './base.component';
 import { GoogleComponent } from './google.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: 'auth', component: GoogleAuthComponent},
       { path: 'auth-callback', component: GoogleAuthCallbackComponent },
+      { path: 'week/:begin', component: GoogleWeeklyScheduleComponent, canActivate: [GoogleGuardedRouteService] },
       { path: '', component: GoogleSchedulesComponent, canActivate: [GoogleGuardedRouteService] },
     ]
   },

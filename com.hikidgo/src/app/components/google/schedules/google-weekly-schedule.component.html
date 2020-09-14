@@ -1,0 +1,30 @@
+<div class="page">
+	<div fxLayout="row" fxLayoutAlign="center top">
+		<div fxFlex="75%" fxFlex.xs="100%">
+			<mat-card>
+				<mat-card-title>{{'WEEK_OF' | translate}} {{ begin | moment: 'dddd, MMMM Do YYYY' }}</mat-card-title>
+				<mat-progress-bar *ngIf="refreshing || saving" mode="indeterminate"></mat-progress-bar>
+				<div *ngIf="exception">
+					<div class="exception alert alert-danger" style="margin-top:10px;margin-bottom:10px;">
+						{{exception.getMessage() | translate }}
+					</div>
+
+					<div style="margin:20px;text-align:center;">
+						<button mat-fab (click)="refresh()">
+							<mat-icon class="mat-24">refresh</mat-icon>
+						</button>
+					</div>
+				</div>
+ 
+				<div *ngIf="exception == null">
+					{{schedule.version}}
+				</div>
+			</mat-card>
+		</div>
+	</div>
+  <div class="app-action">
+    <a mat-fab *ngIf="!refreshing && !saving" (click)="save()" class="save" title="{{'SAVE' | translate}}">
+      <mat-icon>save</mat-icon>
+    </a>
+  </div>
+</div>

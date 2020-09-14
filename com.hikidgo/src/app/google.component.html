@@ -38,7 +38,7 @@
 			<mat-menu x-position="before" #menu="matMenu">
 				<button routerLink="/" mat-menu-item> {{ 'SWITCH_SYSTEMS' | translate }} </button>
 				<button mat-menu-item [matMenuTriggerFor]="langs"> {{ 'LANGUAGE' | translate }} ({{translate.currentLang}})</button>
-				<button *ngIf="userContext != null" (click)="logout()" mat-menu-item>  {{ 'SIGN_OUT' | translate }} </button>
+				<button *ngIf="userContext != null" (click)="signout()" mat-menu-item>  {{ 'SIGN_OUT' | translate }} </button>
 				<div style="min-width:200px"></div>
 			</mat-menu>
 			<mat-menu #langs="matMenu">

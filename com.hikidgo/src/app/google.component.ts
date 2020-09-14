@@ -99,7 +99,7 @@ export class GoogleComponent implements OnInit, OnDestroy {
     }
   }
 
-  logout() {
+  signout() {
     this._userStateService.signoutRedirect(this.translate.currentLang);
   }
 

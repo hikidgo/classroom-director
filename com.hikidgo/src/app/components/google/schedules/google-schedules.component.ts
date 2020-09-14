@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TitleService } from '../../../services/title/title.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { UserManager } from 'oidc-client';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { UserManagerProviderType, UserStateFactory } from 'src/app/services/authentication/user-state.factory';
 import { UserContext } from 'src/app/services/authentication/user-state.service';
-import { SchedulesService } from 'src/app/services/schedules/schedules.service';
+import { SchedulesService, WeeklyScheduleReference } from 'src/app/services/schedules/schedules.service';
+import { GoogleSchedulesService } from 'src/app/services/google/schedules/schedules.service';
 
 @Component({
   selector: 'app-google-schedules',
@@ -19,6 +18,7 @@ export class GoogleSchedulesComponent implements OnInit, OnDestroy {
   private _subs: Subscription[] = [];
   userContext: UserContext = null;
 
+  schedules : WeeklyScheduleReference[] = null;
 
   constructor(
     private _titleService: TitleService,
@@ -27,7 +27,6 @@ export class GoogleSchedulesComponent implements OnInit, OnDestroy {
     private _schedulesService: SchedulesService) { 
 
       var userStateService = this._userStateFactory.create(UserManagerProviderType.Google);
-      userStateService.init();
   
       var sub = userStateService.userContext$.subscribe(x => {
         this.userContext = x;
@@ -43,7 +42,7 @@ export class GoogleSchedulesComponent implements OnInit, OnDestroy {
     });
     this._subs.push(subTitle);
 
-    var schedules = this._schedulesService.getUpcoming();
+    this.schedules = this._schedulesService.getUpcoming();
 
   }
 

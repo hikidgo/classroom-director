@@ -50,6 +50,8 @@ import { DragDropDirective } from './directives/drag-drop-directive';
 import { MomentPipe } from './pipes/moment-pipe';
 import { BaseComponent } from './base.component';
 import { GoogleComponent } from './google.component';
+import { GoogleSchedulesComponent } from './components/google/schedules/google-schedules.component';
+import { GoogleWeeklyScheduleComponent } from './components/google/schedules/google-weekly-schedule.component';
 import { GoogleAuthComponent } from './components/google/auth/google-auth.component';
 import { GoogleAuthCallbackComponent } from './components/google/auth/google-auth-callback.component';
 
@@ -89,6 +91,8 @@ export class DynamicLocaleId extends String {
     GoogleComponent,
     GoogleAuthComponent,
     GoogleAuthCallbackComponent,
+    GoogleSchedulesComponent,
+    GoogleWeeklyScheduleComponent,
     DragDropDirective
   ],
   imports: [
