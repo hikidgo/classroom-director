@@ -56,20 +56,22 @@ export class WeeklySchedule{
 
 export class DailySchedule{
     constructor(){
-        this.assignments = [];
+        this.events = [];
     }
-    assignments : Assignment[];
+    events : ScheduleEvent[];
 }
 
-export class Assignment{
+export class ScheduleEvent{
     constructor(){
         this.tasks = [];
     }
+    
     time : number;
-    tasks : Task[];
+    title : string;
+    tasks : ScheduleTask[];
 }
 
-export class Task{
+export class ScheduleTask{
     key : string;
     configuration : string;
 }

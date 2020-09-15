@@ -6,7 +6,7 @@
 				<mat-list>
 					<mat-nav-list>
 					  <a mat-list-item *ngFor="let s of schedules" [routerLink]="['week',s.begin.getTime()]">
-						<span matLine>{{ 'WEEK_OF' | translate }} {{ s.begin | moment: 'dddd, MMMM Do YYYY' }}</span>
+						<span matLine>{{ 'WEEK_OF' | translate }} {{ s.begin | moment: 'MMMM Do YYYY' }}</span>
 						<mat-icon>keyboard_arrow_right</mat-icon>
 					  </a>
 					</mat-nav-list>

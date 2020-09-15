@@ -14,5 +14,14 @@
     "NO" : "No",
     "REDIRECTING" : "Redirigiendo...",
     "WEEK_OF" : "Semana de",
-    "SAVE" : "Salvar"
+    "SAVE" : "Salvar",
+    "VERSION": "Versión",
+    "ADD_EVENT": "Añadir evento",
+    "SUNDAY": "domingo",
+    "MONDAY": "lunes",
+    "TUESDAY": "martes",
+    "WEDNESDAY": "miércoles",
+    "THURSDAY": "jueves",
+    "FRIDAY": "viernes",
+    "SATURDAY": "sábado"
 }

@@ -12,24 +12,33 @@ export class GoogleSchedulesService {
 
     update(request: WeeklyScheduleUpdateRequest): Observable<WeeklyScheduleResponse> {
         var url = `https://www.googleapis.com/upload/drive/v3/files`;
-        var meta = new GoogleFilesUploadModel();
+        var uploadModel = new GoogleFilesUploadModel();
         var params = new HttpParams();
-        for (let property in meta) {
-            if (request.schedule[property] != null) {
-                params = params.append(property, request.schedule[property]);
+        for (let property in uploadModel) {
+            if (uploadModel[property] != null) {
+                params = params.append(property, uploadModel[property]);
             }
         }
 
         var exists: boolean = true;
-        var ref = request.ref;
-        var contentType = 'application/json';
-        if (ref == null) {
+        
+        var meta : string;
+        var mimeType = 'application/json';
+        if (request.ref == null) {
             exists = false;
             const name: string = request.schedule.begin.getTime().toString()+".json";
-            ref = new GoogleFileRef();
-            ref.name = name;
-            ref.mimeType = contentType;
+            
+            meta = JSON.stringify({
+                name,
+                mimeType,
+                parents: ['appDataFolder']
+            });
         }
+        else{
+            meta = JSON.stringify({
+            });
+        }
+
         if(request.schedule.version == null){
             request.schedule.version = 0;
         }
@@ -43,16 +52,17 @@ export class GoogleSchedulesService {
         var body =
             delimiter +
             'Content-Type: application/json\r\n\r\n' +
-            JSON.stringify(ref) +
+            meta +
             delimiter +
-            'Content-Type: ' + contentType + '\r\n' +
+            'Content-Type: ' + mimeType + '\r\n' +
             'Content-Transfer-Encoding: base64\r\n' +
             '\r\n' +
             base64Data +
             close_delim;
 
         if (exists) {
-            return this.http.put<GoogleFileRef>(url, body, { params: params, headers: { "Content-Type": 'multipart/mixed; boundary="' + boundary + '"' } }).pipe(
+            url = `${url}/${encodeURIComponent(request.ref.id)}`;
+            return this.http.patch<GoogleFileRef>(url, body, { params: params, headers: { "Content-Type": 'multipart/mixed; boundary="' + boundary + '"' } }).pipe(
                 map(x => {
                     return <WeeklyScheduleResponse>{
                         schedule: request.schedule,
@@ -102,7 +112,7 @@ export class GoogleSchedulesService {
     }
     
     private getFile(ref: GoogleFileRef): Observable<WeeklySchedule> {
-        var url = `https://www.googleapis.com/drive/v3/files/${ref.id}`;
+        var url = `https://www.googleapis.com/drive/v3/files/${encodeURIComponent(ref.id)}`;
         var params = new HttpParams();
         var model = new GoogleFilesDownloadModel();
         for (let property in model) {
@@ -138,7 +148,7 @@ export class GoogleFilesPagedQueryModel {
     pageToken: string;
     corpus: string = "user";
     spaces: string = "appDataFolder";
-    fields: string = "nextPageToken, files(*)";
+    fields: string = "nextPageToken, files(id, name, kind, mimeType, parents)";
     q: string;
 }
 
@@ -153,7 +163,6 @@ export class GoogleFileRef {
     kind?: string;
     mimeType: string = "application/json";
     parents: string[] = ['appDataFolder'];
-    webContentLink?:string;
 }
 
 export class GoogleScheduleReferencesResponse {

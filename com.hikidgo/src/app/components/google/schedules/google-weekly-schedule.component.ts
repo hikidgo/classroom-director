@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserManagerProviderType, UserStateFactory } from 'src/app/services/authentication/user-state.factory';
 import { UserContext } from 'src/app/services/authentication/user-state.service';
-import { WeeklySchedule } from 'src/app/services/schedules/schedules.service';
+import { DailySchedule, ScheduleEvent, WeeklySchedule } from 'src/app/services/schedules/schedules.service';
 import { GoogleFileRef, GoogleSchedulesService } from 'src/app/services/google/schedules/schedules.service';
 import { Exception, UnauthorizedException } from 'src/app/interceptors/http-interceptor.service';
 
@@ -27,6 +27,7 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
 
   begin : Date;
   schedule : WeeklySchedule = null;
+  days : DailySchedule[] = null;
   ref : GoogleFileRef = null;
 
   constructor(
@@ -68,6 +69,16 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
     this._svc.get(this.begin)
       .subscribe(
         x => {
+
+          x.schedule.monday.events.push(<ScheduleEvent>{
+            time: 510,
+            title: "Class Meeting (Live)",
+            tasks: [
+              { key: "speak", configuration: JSON.stringify({ text: "It's time for your morning meeting!" }) },
+              { key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
+            ]
+          });
+
           this.ref = x.ref;
           this.schedule = x.schedule;
           this.refreshing = false;

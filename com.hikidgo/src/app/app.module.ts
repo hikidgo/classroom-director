@@ -52,6 +52,8 @@ import { BaseComponent } from './base.component';
 import { GoogleComponent } from './google.component';
 import { GoogleSchedulesComponent } from './components/google/schedules/google-schedules.component';
 import { GoogleWeeklyScheduleComponent } from './components/google/schedules/google-weekly-schedule.component';
+import { GoogleDailyScheduleComponent } from './components/google/schedules/google-daily-schedule.component';
+import { GoogleScheduleEventComponent } from './components/google/schedules/google-schedule-event.component';
 import { GoogleAuthComponent } from './components/google/auth/google-auth.component';
 import { GoogleAuthCallbackComponent } from './components/google/auth/google-auth-callback.component';
 
@@ -93,6 +95,8 @@ export class DynamicLocaleId extends String {
     GoogleAuthCallbackComponent,
     GoogleSchedulesComponent,
     GoogleWeeklyScheduleComponent,
+    GoogleDailyScheduleComponent,
+    GoogleScheduleEventComponent,
     DragDropDirective
   ],
   imports: [
