@@ -66,12 +66,14 @@ export class ScheduleEvent{
         this.tasks = [];
     }
     
+    uniqueId : string;
     time : number;
     title : string;
-    tasks : ScheduleTask[];
+    tasks : ScheduleEventTask[];
 }
 
-export class ScheduleTask{
+export class ScheduleEventTask{
+    uniqueId : string;
     key : string;
     configuration : string;
 }

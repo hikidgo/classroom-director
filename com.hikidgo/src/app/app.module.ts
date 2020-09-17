@@ -48,12 +48,16 @@ import { AppSettingsService } from './services/app-settings/app-settings.service
 import { UserStateFactory } from './services/authentication/user-state.factory';
 import { DragDropDirective } from './directives/drag-drop-directive';
 import { MomentPipe } from './pipes/moment-pipe';
+import { TimePipe } from './pipes/time-pipe';
 import { BaseComponent } from './base.component';
 import { GoogleComponent } from './google.component';
 import { GoogleSchedulesComponent } from './components/google/schedules/google-schedules.component';
 import { GoogleWeeklyScheduleComponent } from './components/google/schedules/google-weekly-schedule.component';
 import { GoogleDailyScheduleComponent } from './components/google/schedules/google-daily-schedule.component';
-import { GoogleScheduleEventComponent } from './components/google/schedules/google-schedule-event.component';
+import { GoogleScheduleEventComponent } from './components/google/schedules/schedule-event-preview.component';
+import { ScheduleEventEditorComponent } from './components/google/schedules/schedule-event-editor.component';
+import { ScheduleEventTaskEditorComponent } from './components/google/schedules/schedule-event-task-editor.component';
+
 import { GoogleAuthComponent } from './components/google/auth/google-auth.component';
 import { GoogleAuthCallbackComponent } from './components/google/auth/google-auth-callback.component';
 
@@ -88,6 +92,7 @@ export class DynamicLocaleId extends String {
   declarations: [
     BaseComponent,
     MomentPipe,
+    TimePipe,
     AppComponent,
     HomeComponent,
     GoogleComponent,
@@ -97,6 +102,8 @@ export class DynamicLocaleId extends String {
     GoogleWeeklyScheduleComponent,
     GoogleDailyScheduleComponent,
     GoogleScheduleEventComponent,
+    ScheduleEventEditorComponent,
+    ScheduleEventTaskEditorComponent,
     DragDropDirective
   ],
   imports: [
@@ -151,6 +158,8 @@ export class DynamicLocaleId extends String {
     { provide: MatPaginatorIntl, useClass: PaginatorI18n, deps: [TranslateService], multi:false }
   ],
   entryComponents:[
+    ScheduleEventEditorComponent,
+    ScheduleEventTaskEditorComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -290,8 +290,20 @@ mat-spinner.button{
   z-index: 1000;
 }
 
-.app-action a.green{
-    background-color: #12BC32;
+.app-action a.green,
+.app-action button.green,
+button.green,
+div.actions button.green,
+.bg-green {
+    background-color: #2ebda5;
+    color:white;
+}
+
+.app-action a.yellow,
+button.yellow,
+div.actions button.yellow,
+.bg-yellow{
+    background: #FFCE70;
     color:white;
 }
 

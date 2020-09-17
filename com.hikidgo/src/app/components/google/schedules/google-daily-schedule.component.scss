@@ -1,13 +1,44 @@
 mat-card{
     min-height: 350px;
+    padding:4px;
 }
 
 mat-card .mat-card-title {
     font-size: 16px;
 }
 
-div.actions button{
+div.actions.top button{
     width:100%;
 }
 
+div.events{
+    margin-top:10px;
+}
 
+div.event div.actions{
+    position: relative;
+}
+
+div.event div.actions button.edit {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.super-mini-fab {
+    width: 30px;
+    height: 30px;
+    line-height: 21px;
+    font-size: 21px;
+
+    &::ng-deep .mat-button-wrapper{
+        line-height: 21px;
+        padding: 0;
+
+         .mat-icon {
+             font-size: 21px;
+             padding-right: 0px;
+             padding-top: 2px;
+         }
+   }
+}

@@ -1,0 +1,17 @@
+<div mat-dialog-content>
+    <form [formGroup]="frm" (ngSubmit)="onOkClick(frm.value, frm.valid)">
+      <div class="form-container">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Title" align="start" formControlName="title" />
+          <mat-error *ngIf="(frm.controls.title.touched && !frm.controls.title.valid)">
+            {{'VALID_TITLE' | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="dialog-buttons" style="text-align: right">
+          <button type="button" mat-raised-button color="warn" (click)="onRemove()"> {{'REMOVE' | translate }} </button>
+          <button type="submit" mat-raised-button color="primary" [disabled]="!frm.valid"> {{'OK' | translate}}</button>
+          <button type="button" mat-button (click)="onCancelClick()">{{'CANCEL'|translate}}</button>
+      </div>
+    </form>
+</div>

@@ -1,19 +1,20 @@
 <mat-card>
 	<mat-card-title>{{ dayOfWeek | translate }}</mat-card-title>
-	<div class="actions">
+	<div class="actions top">
 		<button type="button" mat-raised-button color="primary" title="{{ 'ADD_EVENT' | translate }}"
 			(click)="onShowAddEventEditor()">
 			<mat-icon>add</mat-icon>
 		</button>
 	</div>
 	<div class="events">
-		<mat-list>
-			<ng-container *ngFor="let event of schedule.events">
-				<mat-list-item>
-					<app-google-schedule-event [event]="event"></app-google-schedule-event>
-					<mat-divider></mat-divider>
-				</mat-list-item>
-			</ng-container>
-		  </mat-list>
+		<div class="event" *ngFor="let event of schedule.events; trackBy: trackByUniqueId">
+			<div class="actions">
+				<button type="button" mat-mini-fab class="edit yellow super-mini-fab" title="{{'EDIT' | translate}}" (click)="onShowEventEditor(event)">
+					<mat-icon>edit</mat-icon>
+				</button>
+			</div>
+			<app-schedule-event-preview [event]="event"></app-schedule-event-preview>
+			<mat-divider></mat-divider>
+		</div>
 	</div>
 </mat-card>

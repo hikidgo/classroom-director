@@ -1,7 +1,10 @@
-import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { DailySchedule, ScheduleEvent } from 'src/app/services/schedules/schedules.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { DailySchedule } from 'src/app/services/schedules/schedules.service';
+import { ScheduleEventEditorComponent, ScheduleEventEditorResponse } from './schedule-event-editor.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-google-daily-schedule',
@@ -9,66 +12,62 @@ import { DailySchedule } from 'src/app/services/schedules/schedules.service';
   styleUrls: ['./google-daily-schedule.component.scss'],
   providers: []
 })
-export class GoogleDailyScheduleComponent implements OnInit {
-
-  @ViewChild("routeMenu", { static: true, read: ElementRef }) routeMenu: ElementRef;
-  @ViewChild(MatMenuTrigger, { static: true }) menuTrigger: MatMenuTrigger;
+export class GoogleDailyScheduleComponent implements OnInit, OnDestroy {
+  private _subs: Subscription[] = [];
 
   @Input() dayOfWeek: string;
   @Input() schedule: DailySchedule;
 
-  constructor(private _dialog: MatDialog) {
+  constructor(private _dialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    private _translate: TranslateService) {
 
   }
 
   ngOnInit() {
   }
 
+  trackByUniqueId(index: number, item: ScheduleEvent) {
+    return item.uniqueId;
+  }
+
+  removeEvent(event: ScheduleEvent) {
+    var idx = this.schedule.events.indexOf(event, 0);
+    if (idx > -1) {
+      this.schedule.events.splice(idx, 1);
+    }
+  }
+
   onShowAddEventEditor() {
-    const schedule = this.schedule;
-    const c = this;
-
-    // const dialogRef = this._dialog.open(CardRouteEditorComponent, {
-    //   data: <CardRouteEditorData>{
-    //     allowRemove: false,
-    //     allowEdit: true,
-    //     routeName: null,
-    //     context: ctx
-    //   }
-    // });
-
-    // const sub = dialogRef.afterClosed().subscribe((result: CardRouteEditResponse) => {
-    //   if (result) {
-       
-
-    //   }
-    //   sub.unsubscribe();
-    // });
 
   }
 
-  // onShowRouteEditor(endpoint, e) {
-  //   const ctx = this.context;
-  //   const ep = endpoint;
+  onShowEventEditor(event: ScheduleEvent) {
+    const copy = <ScheduleEvent>(JSON.parse(JSON.stringify(event)));;
+    const dialogRef = this._dialog.open(ScheduleEventEditorComponent, {
+      data: copy
+    });
 
-  //   const uuid = endpoint._jsPlumb.uuid;
-  //   const routeName = uuid.substring(uuid.indexOf('|') + 1);
+    const sub = dialogRef.afterClosed().subscribe((result: ScheduleEventEditorResponse) => {
+      if (result != null) {
+        if (result.update) {
+          this.removeEvent(event);
+          this.schedule.events.push(result.event);
+          const ss = this._translate.get('EVENT_UPDATED').subscribe(x => {
+            this._snackBar.open(`${x}`);
+            ss.unsubscribe();
+          });
+        } 
+        else if (result.delete) {
+          this.removeEvent(event);
+        }
+      }
+      sub.unsubscribe();
+    });
+  }
 
-  //   const dialogRef = this._dialog.open(CardRouteEditorComponent, {
-  //     data: <CardRouteEditorData>{
-  //       allowRemove: true,
-  //       allowEdit: false,
-  //       routeName: routeName,
-  //       context: ctx
-  //     }
-  //   });
-
-  //   const sub = dialogRef.afterClosed().subscribe((result: CardRouteEditResponse) => {
-  //     if (result != null && result.delete) {
-  //       //delete ctx.card.routes[routeName];
-  //     }
-  //     sub.unsubscribe();
-  //   });
-  // }
+  ngOnDestroy() {
+    this._subs.forEach(x => x.unsubscribe());
+  }
 }
 
