@@ -27,8 +27,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/web.config",
-              "src/appsettings.json",
-              "src/appsettings.environment.json"
+              "src/settings.json",
+              "src/settings.prod.json"
             ],
             "styles": [
               "src/styles.scss"

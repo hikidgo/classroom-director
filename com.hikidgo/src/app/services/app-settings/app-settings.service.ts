@@ -7,14 +7,14 @@ export class AppSettingsService {
 
     async init(): Promise<AppSettingsConfiguration> {
         var appsettings = new AppSettingsConfiguration();
-        var response = await fetch('appsettings.json');
+        var response = await fetch('settings.json');
         if (response.status == 200) {
             var lazyLoadedEnvironment = <AppSettingsConfiguration>(await response.json());
 
             this.mergeDeep(appsettings, lazyLoadedEnvironment);
         }
         else {
-            throw "appsettings.json couldn't be loaded."
+            throw "settings.json couldn't be loaded."
         }
 
         window.appsettings = appsettings;
@@ -54,9 +54,9 @@ export class AppSettingsConfiguration {
     baseApiUrl: string = '';
     googleAuthentication: AppSettingsAuthenticationConfiguration = <AppSettingsAuthenticationConfiguration>{
         authority : "https://accounts.google.com",
-        client_id : "500087856008-ocjf66ods1bv4l231fbu7pcs2hs8avlm.apps.googleusercontent.com",
+        client_id : "",
         redirect_uri : `${window.location.origin}/google/auth-callback`,
-        post_logout_redirect_uri: `${window.location.origin}/google/logout-callback`,
+        post_logout_redirect_uri: `${window.location.origin}`,
         response_type: "id_token token",
         scope: `openid email profile https://www.googleapis.com/auth/drive.appdata https://www.googleapis.com/auth/classroom.courses.readonly https://www.googleapis.com/auth/classroom.coursework.me.readonly`,
     };

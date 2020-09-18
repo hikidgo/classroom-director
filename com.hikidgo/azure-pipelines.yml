@@ -16,8 +16,8 @@ steps:
     npm install -g @angular/cli
     npm install
     ng build --prod
-    rm "dist/portal/appsettings.json"
-    mv "dist/portal/appsettings.environment.json" "dist/portal/appsettings.json"
+    rm "dist/portal/settings.json"
+    mv "dist/portal/settings.prod.json" "dist/portal/settings.json"
   displayName: 'npm install and build'
   
 # copy output to build artifacts

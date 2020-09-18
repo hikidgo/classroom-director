@@ -60,11 +60,11 @@ export class GoogleDailyScheduleComponent implements OnInit, OnDestroy {
           this.schedule.events.push(result.event);
           const ss = this._translate.get('EVENT_ADDED').subscribe(x => {
             this._snackBar.open(`${x}`);
-            ss.unsubscribe();
           });
+          this._subs.push(ss);
         } 
       }
-      sub.unsubscribe();
+      this._subs.push(sub);
     });
   }
 
@@ -83,14 +83,14 @@ export class GoogleDailyScheduleComponent implements OnInit, OnDestroy {
           this.schedule.events.push(result.event);
           const ss = this._translate.get('EVENT_UPDATED').subscribe(x => {
             this._snackBar.open(`${x}`);
-            ss.unsubscribe();
           });
+          this._subs.push(ss);
         } 
         else if (result.delete) {
           this.removeEvent(event);
         }
       }
-      sub.unsubscribe();
+      this._subs.push(sub);
     });
   }
 
