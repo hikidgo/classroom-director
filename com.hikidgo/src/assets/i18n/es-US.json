@@ -23,5 +23,6 @@
     "WEDNESDAY": "miércoles",
     "THURSDAY": "jueves",
     "FRIDAY": "viernes",
-    "SATURDAY": "sábado"
+    "SATURDAY": "sábado",
+    "SPEAK": "Hola {{name}}. ¿Estás listo? No me importa, te vas de todos modos. ¡Vamos!"
 }

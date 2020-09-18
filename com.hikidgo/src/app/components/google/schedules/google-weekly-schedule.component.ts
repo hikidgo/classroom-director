@@ -56,10 +56,18 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     const subTitle = this._translate.get('SCHEDULES').subscribe(x => {
         this._titleService.setTitle(`${x}`);
+        subTitle.unsubscribe();
     });
-    this._subs.push(subTitle);
 
     this.refresh();
+
+    const subTranslate = this._translate.get('SPEAK', {name: this.userContext.user.profile.given_name}).subscribe((res: string) => {
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = this._translate.currentLang;
+        msg.text = res;
+        window.speechSynthesis.speak(msg);
+        subTranslate.unsubscribe();
+    });
   }
   
   refresh() {

@@ -23,5 +23,6 @@
     "WEDNESDAY": "Wednesday",
     "THURSDAY": "Thursday",
     "FRIDAY": "Friday",
-    "SATURDAY": "Saturday"
+    "SATURDAY": "Saturday",
+    "SPEAK": "Hi {{name}}. Are you ready? I don't care, you are going anyways. Go!"
 }
