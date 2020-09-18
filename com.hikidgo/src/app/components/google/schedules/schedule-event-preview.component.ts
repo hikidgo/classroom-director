@@ -7,7 +7,7 @@ import { ScheduleEvent } from 'src/app/services/schedules/schedules.service';
   styleUrls: ['./schedule-event-preview.component.scss'],
   providers: []
 })
-export class GoogleScheduleEventComponent implements OnInit {
+export class ScheduleEventPreviewComponent implements OnInit {
 
   @Input() event: ScheduleEvent;
 

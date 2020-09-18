@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { UserManagerProviderType, UserStateFactory } from 'src/app/services/authentication/user-state.factory';
 import { UserContext } from 'src/app/services/authentication/user-state.service';
 import { SchedulesService, WeeklyScheduleReference } from 'src/app/services/schedules/schedules.service';
-import { GoogleSchedulesService } from 'src/app/services/google/schedules/schedules.service';
 
 @Component({
   selector: 'app-google-schedules',

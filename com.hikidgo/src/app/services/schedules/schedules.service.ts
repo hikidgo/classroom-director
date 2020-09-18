@@ -74,6 +74,7 @@ export class ScheduleEvent{
 
 export class ScheduleEventTask{
     uniqueId : string;
+    title : string;
     key : string;
     configuration : string;
 }

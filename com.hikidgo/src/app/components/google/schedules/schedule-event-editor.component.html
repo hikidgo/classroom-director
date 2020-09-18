@@ -1,17 +1,46 @@
 <div mat-dialog-content>
+  <div>
     <form [formGroup]="frm" (ngSubmit)="onOkClick(frm.value, frm.valid)">
       <div class="form-container">
         <mat-form-field>
-          <input matInput type="text" placeholder="Title" align="start" formControlName="title" />
+          <input matInput type="text" placeholder="{{'TITLE' | translate}}" align="start" formControlName="title" />
           <mat-error *ngIf="(frm.controls.title.touched && !frm.controls.title.valid)">
-            {{'VALID_TITLE' | translate }}
+            {{'INVALID_TITLE' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field floatLabel="always" appearance="none">
+          <mat-label>{{'TIME' | translate}}</mat-label>
+          <input matInput value="{{ frm.controls['time'].value | time: 'h:mm A' }}" />
+          <mat-slider min="0" max="1435" step="5" value="480" (input)="timeChanged($event)"></mat-slider>
+          <mat-error *ngIf="(frm.controls.time.touched && !frm.controls.time.valid)">
+            {{'INVALID_TIME' | translate }}
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="dialog-buttons" style="text-align: right">
-          <button type="button" mat-raised-button color="warn" (click)="onRemove()"> {{'REMOVE' | translate }} </button>
-          <button type="submit" mat-raised-button color="primary" [disabled]="!frm.valid"> {{'OK' | translate}}</button>
-          <button type="button" mat-button (click)="onCancelClick()">{{'CANCEL'|translate}}</button>
-      </div>
     </form>
+  </div>
+  <div>
+    <div class="actions top">
+      <button type="button" mat-raised-button color="primary" title="{{ 'ADD_TASK' | translate }}"
+        (click)="onAddTask()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="tasks">
+      <div class="task" *ngFor="let task of event.tasks; trackBy: trackByUniqueId">
+        <div class="actions">
+          <button type="button" mat-mini-fab class="edit yellow super-mini-fab" title="{{'EDIT' | translate}}">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <app-schedule-event-task-preview [task]="task"></app-schedule-event-task-preview>
+        <mat-divider></mat-divider>
+      </div>
+    </div>
+  </div>
+  <div class="dialog-buttons" style="text-align: right">
+    <button type="button" mat-raised-button color="warn" (click)="onRemove()"> {{'REMOVE' | translate }} </button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!frm.valid"> {{'OK' | translate}}</button>
+    <button type="button" mat-button (click)="onCancelClick()">{{'CANCEL'|translate}}</button>
+  </div>
 </div>

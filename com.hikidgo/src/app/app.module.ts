@@ -54,7 +54,8 @@ import { GoogleComponent } from './google.component';
 import { GoogleSchedulesComponent } from './components/google/schedules/google-schedules.component';
 import { GoogleWeeklyScheduleComponent } from './components/google/schedules/google-weekly-schedule.component';
 import { GoogleDailyScheduleComponent } from './components/google/schedules/google-daily-schedule.component';
-import { GoogleScheduleEventComponent } from './components/google/schedules/schedule-event-preview.component';
+import { ScheduleEventPreviewComponent } from './components/google/schedules/schedule-event-preview.component';
+import { ScheduleEventTaskPreviewComponent } from './components/google/schedules/schedule-event-task-preview.component';
 import { ScheduleEventEditorComponent } from './components/google/schedules/schedule-event-editor.component';
 import { ScheduleEventTaskEditorComponent } from './components/google/schedules/schedule-event-task-editor.component';
 
@@ -101,7 +102,8 @@ export class DynamicLocaleId extends String {
     GoogleSchedulesComponent,
     GoogleWeeklyScheduleComponent,
     GoogleDailyScheduleComponent,
-    GoogleScheduleEventComponent,
+    ScheduleEventPreviewComponent,
+    ScheduleEventTaskPreviewComponent,
     ScheduleEventEditorComponent,
     ScheduleEventTaskEditorComponent,
     DragDropDirective

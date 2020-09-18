@@ -5,6 +5,7 @@ import { ScheduleEventEditorComponent, ScheduleEventEditorResponse } from './sch
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-google-daily-schedule',
@@ -39,13 +40,40 @@ export class GoogleDailyScheduleComponent implements OnInit, OnDestroy {
   }
 
   onShowAddEventEditor() {
+    const copy = <ScheduleEvent>{
+      uniqueId: uuidv4(),
+      time: 510,
+      title: "",
+      tasks: [
+      ]
+    };
 
+    const dialogRef = this._dialog.open(ScheduleEventEditorComponent, {
+      data: copy,
+      width: '95vw',
+      maxWidth: '95vw',
+    });
+
+    const sub = dialogRef.afterClosed().subscribe((result: ScheduleEventEditorResponse) => {
+      if (result != null) {
+        if (result.update) {
+          this.schedule.events.push(result.event);
+          const ss = this._translate.get('EVENT_ADDED').subscribe(x => {
+            this._snackBar.open(`${x}`);
+            ss.unsubscribe();
+          });
+        } 
+      }
+      sub.unsubscribe();
+    });
   }
 
   onShowEventEditor(event: ScheduleEvent) {
-    const copy = <ScheduleEvent>(JSON.parse(JSON.stringify(event)));;
+    const copy = <ScheduleEvent>(JSON.parse(JSON.stringify(event)));
     const dialogRef = this._dialog.open(ScheduleEventEditorComponent, {
-      data: copy
+      data: copy,
+      width: '95vw',
+      maxWidth: '95vw',
     });
 
     const sub = dialogRef.afterClosed().subscribe((result: ScheduleEventEditorResponse) => {
