@@ -24,5 +24,14 @@
     "THURSDAY": "Thursday",
     "FRIDAY": "Friday",
     "SATURDAY": "Saturday",
-    "SPEAK": "Hi {{name}}. Are you ready? I don't care, you are going anyways. Go!"
+    "SPEAK": "Hi {{name}}. Are you ready? I don't care, you are going anyways. Go!",
+    "TITLE": "Title",
+    "INVALID_TITLE": "Invalid title.",
+    "TIME": "Time",
+    "INVALID_TIME": "Invalid time.",
+    "TASK_TYPE": "Task Type",
+    "SPEAK_TASK": "Speak",
+    "LAUCH_URL_TASK": "Launch URL",
+    "TEXT": "Text",
+    "URL": "URL"
 }

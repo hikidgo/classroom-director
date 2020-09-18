@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ViewChild, QueryList } from '@angular/core';
+import { Component, OnInit, Inject, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSliderChange } from '@angular/material/slider';
@@ -13,7 +13,7 @@ import { ScheduleEventTaskLoaderComponent } from './tasks/schedule-event-task-lo
   providers: []
 })
 export class ScheduleEventEditorComponent implements OnInit {
-  @ViewChild(ScheduleEventTaskLoaderComponent) taskEditors: QueryList<ScheduleEventTaskLoaderComponent>;
+  @ViewChildren(ScheduleEventTaskLoaderComponent) taskEditors: QueryList<ScheduleEventTaskLoaderComponent>;
   frm: FormGroup;
 
   constructor(
@@ -59,13 +59,13 @@ export class ScheduleEventEditorComponent implements OnInit {
 
   onAddTask(taskType: string) {
     if (taskType != null) {
-      const copy = <ScheduleEventTask>{
+      const task = <ScheduleEventTask>{
         uniqueId: uuidv4(),
         title: "**New**",
         key: taskType,
         configuration: JSON.stringify({})
       };
-
+      this.event.tasks.push(task);
     }
   }
 

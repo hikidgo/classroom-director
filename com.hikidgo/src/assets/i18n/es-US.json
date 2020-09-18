@@ -24,5 +24,14 @@
     "THURSDAY": "jueves",
     "FRIDAY": "viernes",
     "SATURDAY": "sábado",
-    "SPEAK": "Hola {{name}}. ¿Estás listo? No me importa, te vas de todos modos. ¡Vamos!"
+    "SPEAK": "Hola {{name}}. ¿Estás listo? No me importa, te vas de todos modos. ¡Vamos!",
+    "TITLE": "Título",
+    "INVALID_TITLE": "Título inválido.",
+    "TIME": "Hora",
+    "INVALID_TIME": "Hora no válida",
+    "TASK_TYPE": "Tipo de tarea",
+    "SPEAK_TASK": "Hablar",
+    "LAUCH_URL_TASK": "URL de lanzamiento",
+    "TEXT": "Texto",
+    "URL": "URL"
 }
