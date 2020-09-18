@@ -11,47 +11,18 @@ mat-slider{
     width:100%;
 }
 
-div.dialog-buttons{    
-    margin-top: 20px;
-    padding-bottom: 2px;
-}
-
-div.dialog-buttons button{
-    margin-left:10px;
-}
-
-div.actions.top button{
-    width:100%;
+div.actions.top mat-form-field{
+    padding-right:10px;
 }
 
 div.tasks{
     margin-top:10px;
 }
 
-div.task div.actions{
-    position: relative;
+button.remove{
+    float:right;
 }
 
-div.task div.actions button.edit {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-}
-
-.super-mini-fab {
-    width: 30px;
-    height: 30px;
-    line-height: 21px;
-    font-size: 21px;
-
-    &::ng-deep .mat-button-wrapper{
-        line-height: 21px;
-        padding: 0;
-
-         .mat-icon {
-             font-size: 21px;
-             padding-right: 0px;
-             padding-top: 2px;
-         }
-   }
+mat-dialog-content{
+    padding-bottom:20px;
 }

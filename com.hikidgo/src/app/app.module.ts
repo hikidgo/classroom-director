@@ -55,9 +55,11 @@ import { GoogleSchedulesComponent } from './components/google/schedules/google-s
 import { GoogleWeeklyScheduleComponent } from './components/google/schedules/google-weekly-schedule.component';
 import { GoogleDailyScheduleComponent } from './components/google/schedules/google-daily-schedule.component';
 import { ScheduleEventPreviewComponent } from './components/google/schedules/schedule-event-preview.component';
-import { ScheduleEventTaskPreviewComponent } from './components/google/schedules/schedule-event-task-preview.component';
 import { ScheduleEventEditorComponent } from './components/google/schedules/schedule-event-editor.component';
-import { ScheduleEventTaskEditorComponent } from './components/google/schedules/schedule-event-task-editor.component';
+import { ScheduleEventTaskEditorDirective } from './components/google/schedules/tasks/schedule-event-task-editor.directive';
+import { ScheduleEventTaskLoaderComponent } from './components/google/schedules/tasks/schedule-event-task-loader.component';
+import { SpeakTaskEditorComponent } from './components/google/schedules/tasks/speak/speak-task-editor.component';
+import { LaunchUrlTaskEditorComponent } from './components/google/schedules/tasks/launch-url/launch-url-task-editor.component';
 
 import { GoogleAuthComponent } from './components/google/auth/google-auth.component';
 import { GoogleAuthCallbackComponent } from './components/google/auth/google-auth-callback.component';
@@ -103,9 +105,11 @@ export class DynamicLocaleId extends String {
     GoogleWeeklyScheduleComponent,
     GoogleDailyScheduleComponent,
     ScheduleEventPreviewComponent,
-    ScheduleEventTaskPreviewComponent,
     ScheduleEventEditorComponent,
-    ScheduleEventTaskEditorComponent,
+    ScheduleEventTaskLoaderComponent,
+    ScheduleEventTaskEditorDirective,
+    SpeakTaskEditorComponent,
+    LaunchUrlTaskEditorComponent,
     DragDropDirective
   ],
   imports: [
@@ -160,8 +164,7 @@ export class DynamicLocaleId extends String {
     { provide: MatPaginatorIntl, useClass: PaginatorI18n, deps: [TranslateService], multi:false }
   ],
   entryComponents:[
-    ScheduleEventEditorComponent,
-    ScheduleEventTaskEditorComponent
+    ScheduleEventEditorComponent
   ],
   bootstrap: [AppComponent]
 })

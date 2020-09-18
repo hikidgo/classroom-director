@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ScheduleEventTaskEditorComponent } from './schedule-event-task-editor.component';
+import { LaunchUrlTaskEditorComponent } from './launch-url-task-editor.component';
 
-describe('ScheduleEventEditorComponent', () => {
-  let component: ScheduleEventTaskEditorComponent;
-  let fixture: ComponentFixture<ScheduleEventTaskEditorComponent>;
+describe('LaunchUrlTaskEditorComponent', () => {
+  let component: LaunchUrlTaskEditorComponent;
+  let fixture: ComponentFixture<LaunchUrlTaskEditorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ScheduleEventTaskEditorComponent ]
+      declarations: [LaunchUrlTaskEditorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScheduleEventTaskEditorComponent);
+    fixture = TestBed.createComponent(LaunchUrlTaskEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -58,6 +58,7 @@ export class GoogleDailyScheduleComponent implements OnInit, OnDestroy {
       if (result != null) {
         if (result.update) {
           this.schedule.events.push(result.event);
+          this.schedule.events.sort(this.sortByTime);
           const ss = this._translate.get('EVENT_ADDED').subscribe(x => {
             this._snackBar.open(`${x}`);
           });
@@ -81,6 +82,7 @@ export class GoogleDailyScheduleComponent implements OnInit, OnDestroy {
         if (result.update) {
           this.removeEvent(event);
           this.schedule.events.push(result.event);
+          this.schedule.events.sort(this.sortByTime);
           const ss = this._translate.get('EVENT_UPDATED').subscribe(x => {
             this._snackBar.open(`${x}`);
           });
@@ -92,6 +94,16 @@ export class GoogleDailyScheduleComponent implements OnInit, OnDestroy {
       }
       this._subs.push(sub);
     });
+  }
+
+  sortByTime(a : ScheduleEvent,b : ScheduleEvent) : number{
+    if ( a.time < b.time ){
+      return -1;
+    }
+    if ( a.time > b.time ){
+      return 1;
+    }
+    return 0;
   }
 
   ngOnDestroy() {

@@ -1,6 +1,7 @@
-<div mat-dialog-content>
+<h2 mat-dialog-title>Edit Event</h2>
+<mat-dialog-content>
   <div>
-    <form [formGroup]="frm" (ngSubmit)="onOkClick(frm.value, frm.valid)">
+    <form [formGroup]="frm">
       <div class="form-container">
         <mat-form-field>
           <input matInput type="text" placeholder="{{'TITLE' | translate}}" align="start" formControlName="title" />
@@ -20,27 +21,37 @@
     </form>
   </div>
   <div>
+    <h3>Tasks</h3>
     <div class="actions top">
+      <mat-form-field>
+        <mat-label>{{'TASK_TYPE' | translate}}</mat-label>
+        <mat-select #taskType>
+          <mat-option value="speak">{{'SPEAK_TASK' | translate}}</mat-option>
+          <mat-option value="launchUrl">{{'LAUCH_URL_TASK' | translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <button type="button" mat-raised-button color="primary" title="{{ 'ADD_TASK' | translate }}"
-        (click)="onAddTask()">
+        (click)="onAddTask(taskType.value)">
         <mat-icon>add</mat-icon>
       </button>
     </div>
     <div class="tasks">
-      <div class="task" *ngFor="let task of event.tasks; trackBy: trackByUniqueId">
-        <div class="actions">
-          <button type="button" mat-mini-fab class="edit yellow super-mini-fab" title="{{'EDIT' | translate}}">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </div>
-        <app-schedule-event-task-preview [task]="task"></app-schedule-event-task-preview>
-        <mat-divider></mat-divider>
-      </div>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let task of event.tasks; trackBy: trackByUniqueId">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{task.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-schedule-event-task-loader [task]="task"></app-schedule-event-task-loader>
+          <button mat-button color="warn" class="remove" (click)="onRemoveTask(task)">{{'REMOVE' | translate }}</button>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
-  <div class="dialog-buttons" style="text-align: right">
-    <button type="button" mat-raised-button color="warn" (click)="onRemove()"> {{'REMOVE' | translate }} </button>
-    <button type="submit" mat-raised-button color="primary" [disabled]="!frm.valid"> {{'OK' | translate}}</button>
-    <button type="button" mat-button (click)="onCancelClick()">{{'CANCEL'|translate}}</button>
-  </div>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button type="button" mat-raised-button color="warn" (click)="onRemove()"> {{'REMOVE' | translate }} </button>
+  <button type="button" mat-raised-button color="primary" [disabled]="!frm.valid" (click)="onOkClick(frm.value, frm.valid)"> {{'OK' | translate}}</button>
+  <button type="button" mat-button (click)="onCancelClick()">{{'CANCEL'|translate}}</button>
+</mat-dialog-actions>

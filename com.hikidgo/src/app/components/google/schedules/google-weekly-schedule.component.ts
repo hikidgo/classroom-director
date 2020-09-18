@@ -61,13 +61,13 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
 
     this.refresh();
 
-    const subTranslate = this._translate.get('SPEAK', {name: this.userContext.user.profile.given_name}).subscribe((res: string) => {
-        var msg = new SpeechSynthesisUtterance();
-        msg.lang = this._translate.currentLang;
-        msg.text = res;
-        window.speechSynthesis.speak(msg);
-    });
-    this._subs.push(subTranslate);
+    // const subTranslate = this._translate.get('SPEAK', {name: this.userContext.user.profile.given_name}).subscribe((res: string) => {
+    //     var msg = new SpeechSynthesisUtterance();
+    //     msg.lang = this._translate.currentLang;
+    //     msg.text = res;
+    //     window.speechSynthesis.speak(msg);
+    // });
+    // this._subs.push(subTranslate);
   }
   
   refresh() {

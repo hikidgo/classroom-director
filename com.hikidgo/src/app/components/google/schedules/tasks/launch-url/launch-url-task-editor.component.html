@@ -1,0 +1,16 @@
+<form [formGroup]="frm">
+    <div class="form-container">
+        <mat-form-field>
+            <input matInput type="text" placeholder="{{'TITLE' | translate}}" align="start" formControlName="title" />
+            <mat-error *ngIf="(frm.controls.title.touched && !frm.controls.title.valid)">
+                {{'INVALID_TITLE' | translate}}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="{{'URL' | translate}}" align="start" formControlName="url"/>
+            <mat-error *ngIf="(frm.controls.url.touched && !frm.controls.url.valid)">
+                {{'INVALID_URL' | translate}}
+            </mat-error>
+        </mat-form-field>
+    </div>
+</form>
