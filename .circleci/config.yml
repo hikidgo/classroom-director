@@ -5,10 +5,9 @@ jobs:
   build:
     docker:
       - image: circleci/node:6-browsers
-    working_directory: ~/repo
+    working_directory: ~/repo/com.hikidgo
     steps:
       - checkout
-      - run: cd com.hikidgo
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
