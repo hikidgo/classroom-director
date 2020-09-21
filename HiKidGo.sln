@@ -11,13 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macOS", "macOS", "{07ED5AE7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevOps", "DevOps", "{89774AE9-6621-40A8-A322-2DE01F7B7799}"
 	ProjectSection(SolutionItems) = preProject
-		.dockerignore = .dockerignore
 		azure-pipelines.yml = azure-pipelines.yml
 		build_nuget.config = build_nuget.config
-		docker-compose.dcproj = docker-compose.dcproj
-		docker-compose.override.yml = docker-compose.override.yml
-		docker-compose.yml = docker-compose.yml
-		ecr-docker-build-push.bat = ecr-docker-build-push.bat
 	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "com.hikidgo", "com.hikidgo\", "{66BC7BB2-CC43-4251-BD8F-3702D500A620}"
@@ -38,6 +33,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "com.hikidgo", "com.hikidgo\
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "1834"
+		SlnRelativePath = "com.hikidgo\"
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HiKidGo.ClassroomDirectory.Windows.Service", "Players\Windows\HiKidGo.ClassroomDirectory.Windows.Service\HiKidGo.ClassroomDirectory.Windows.Service.csproj", "{86D0E5D1-0EB8-4240-BB3A-A33796349D1D}"
