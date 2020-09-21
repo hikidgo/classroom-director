@@ -28,7 +28,7 @@ export class ScheduleEventEditorComponent implements OnInit {
           Validators.maxLength(256)
         ],
       ],
-      time: [510,
+      time: [null,
         [
           <any>Validators.required,
           Validators.min(0),

@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UserManagerProviderType, UserStateFactory } from './services/authentication/user-state.factory';
+import { GoogleRunService } from './services/google/run/run.service';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class GoogleComponent implements OnInit, OnDestroy {
   constructor(
     private _ngZone: NgZone,
     private _userStateFactory: UserStateFactory,
-    public translate : TranslateService) {
+    public translate : TranslateService,
+    private _runService: GoogleRunService) {
 
     this._userStateService = this._userStateFactory.create(UserManagerProviderType.Google);
     this._userStateService.init();
@@ -54,6 +56,7 @@ export class GoogleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkMenu();
+    this._runService.start();
   }
 
   lang(lang : string){
@@ -104,6 +107,7 @@ export class GoogleComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this._runService.stop();
     this._subs.forEach(x => x.unsubscribe());
   }
 

@@ -11,7 +11,6 @@ export class MomentPipe implements PipeTransform {
 
     transform(value: any | moment.Moment, dateFormat: string): any {
         if(value != null && value != ''){
-            console.log(this._translate.currentLang);
             return moment(value).locale(this._translate.currentLang).format(dateFormat);
         }
         return '';

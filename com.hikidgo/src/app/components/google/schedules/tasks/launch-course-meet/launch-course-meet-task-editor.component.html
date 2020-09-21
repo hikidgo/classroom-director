@@ -1,0 +1,28 @@
+<mat-progress-bar *ngIf="refreshing" mode="indeterminate"></mat-progress-bar>				<div *ngIf="exception">
+    <div class="exception alert alert-danger" style="margin-top:10px;margin-bottom:10px;">
+        {{exception.getMessage() | translate }}
+    </div>
+    <div style="margin:20px;text-align:center;">
+        <button mat-fab (click)="refreshCourses()">
+            <mat-icon class="mat-24">refresh</mat-icon>
+        </button>
+    </div>
+</div>
+<form [formGroup]="frm">
+    <div class="form-container">
+        <mat-form-field>
+            <input matInput type="text" placeholder="{{'TITLE' | translate}}" align="start" formControlName="title" />
+            <mat-error *ngIf="(frm.controls.title.touched && !frm.controls.title.valid)">
+                {{'INVALID_TITLE' | translate }}
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>{{ 'COURSE' | translate }}</mat-label>
+          <mat-select formControlName="courseId">
+            <mat-option *ngFor="let c of courses" [value]="c.id">
+              {{c.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+    </div>
+</form>

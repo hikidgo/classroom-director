@@ -7,7 +7,7 @@
     "SIGN_OUT": "Sign out",
     "LANGUAGE": "Language",
     "SELECT_CLASSROOM_PROVIDER": "What system does your classroom use?",
-    "GOOGLE_CLASSROOM": "Google Classrooms",
+    "GOOGLE_CLASSROOM": "Google Courses",
     "SCHEDULES": "Schedules",
     "SWITCH_SYSTEMS": "Switch Classroom System",
     "YES": "Yes",
@@ -31,7 +31,15 @@
     "INVALID_TIME": "Invalid time.",
     "TASK_TYPE": "Task Type",
     "SPEAK_TASK": "Speak",
-    "LAUCH_URL_TASK": "Launch URL",
+    "LAUNCH_URL_TASK": "Launch URL",
+    "LAUNCH_COURSE_WORK" : "Launch Course Work",
+    "LAUNCH_LIVE_VIDEO" : "Launch Live Video",
     "TEXT": "Text",
-    "URL": "URL"
+    "URL": "URL",
+    "EVENT_UPDATED": "Event updated.",
+    "EVENT_ADDED" : "Event added.",
+    "SPEAK_DESCRIPTION": "Speak Description",
+    "COURSE" : "Course",
+    "COURSE_WORK_TOPIC" : "Course Work Topic",
+    "COURSE_WORK" : "Course Work"
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SpeakTaskConfiguration } from 'src/app/services/google/run/tasks/speak/speak-task-runner.service';
 import { ScheduleEventTask } from 'src/app/services/schedules/schedules.service';
 import { ScheduleEventTaskEditorComponent, ScheduleEventTaskCommitResponse } from '../schedule-event-task-editor.component'
 
@@ -32,7 +33,7 @@ export class SpeakTaskEditorComponent implements ScheduleEventTaskEditorComponen
   }
 
   ngOnInit() {
-    var config = <SpeakTaskConfiguration>JSON.parse(this.task.configuration);
+    const config = <SpeakTaskConfiguration>JSON.parse(this.task.configuration);
 
     this.frm.setValue({
       title: this.task.title,
@@ -62,9 +63,5 @@ export class SpeakTaskEditorComponent implements ScheduleEventTaskEditorComponen
     };
   }
 
-}
-
-export interface SpeakTaskConfiguration {
-  text: string;
 }
 

@@ -1,0 +1,21 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+}
+  
+.form-container > * {
+    width: 100%;
+}
+
+div.general,
+div.buttons {
+    margin-top:20px;
+    margin-bottom:20px;
+    min-height: 260px;
+}
+
+div.buttons {
+    padding-left:2px;
+    padding-right:2px;
+}

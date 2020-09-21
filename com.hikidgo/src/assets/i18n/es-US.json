@@ -31,7 +31,15 @@
     "INVALID_TIME": "Hora no válida",
     "TASK_TYPE": "Tipo de tarea",
     "SPEAK_TASK": "Hablar",
-    "LAUCH_URL_TASK": "URL de lanzamiento",
+    "LAUNCH_URL_TASK": "URL de lanzamiento",
+    "LAUNCH_COURSE_WORK" : "Iniciar el trabajo del curso",
+    "LAUNCH_LIVE_VIDEO" : "Lanzar video en vivo",
     "TEXT": "Texto",
-    "URL": "URL"
+    "URL": "URL",
+    "EVENT_UPDATED": "Evento actualizado.",
+    "EVENT_ADDED" : "Evento agregado.",
+    "SPEAK_DESCRIPTION": "Hablar descripción",
+    "COURSE" : "Curso",
+    "COURSE_WORK_TOPIC" : "Tema de trabajo del curso",
+    "COURSE_WORK" : "Trabajo del curso"
 }

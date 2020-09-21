@@ -32,7 +32,7 @@ export class LaunchUrlTaskEditorComponent implements ScheduleEventTaskEditorComp
   }
 
   ngOnInit() {
-    var config = <LaunchUrlTaskConfiguration>JSON.parse(this.task.configuration);
+    const config = <LaunchUrlTaskConfiguration>JSON.parse(this.task.configuration);
 
     this.frm.setValue({
       title: this.task.title,

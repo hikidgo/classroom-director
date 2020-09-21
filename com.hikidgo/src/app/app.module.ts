@@ -60,13 +60,20 @@ import { ScheduleEventTaskEditorDirective } from './components/google/schedules/
 import { ScheduleEventTaskLoaderComponent } from './components/google/schedules/tasks/schedule-event-task-loader.component';
 import { SpeakTaskEditorComponent } from './components/google/schedules/tasks/speak/speak-task-editor.component';
 import { LaunchUrlTaskEditorComponent } from './components/google/schedules/tasks/launch-url/launch-url-task-editor.component';
+import { LaunchCourseWorkTaskEditorComponent } from './components/google/schedules/tasks/launch-course-work/launch-course-work-task-editor.component';
+import { LaunchCourseMeetTaskEditorComponent } from './components/google/schedules/tasks/launch-course-meet/launch-course-meet-task-editor.component';
 
 import { GoogleAuthComponent } from './components/google/auth/google-auth.component';
 import { GoogleAuthCallbackComponent } from './components/google/auth/google-auth-callback.component';
 
-import { GoogleClassroomsService } from './services/google/classrooms/classrooms.service';
+import { GoogleCoursesService } from './services/google/courses/courses.service';
+import { GoogleCourseWorkService } from 'src/app/services/google/course-work/course-work.service';
+import { GoogleCourseWorkTopicsService } from 'src/app/services/google/course-work-topics/course-work-topics.service';
 import { GoogleSchedulesService } from './services/google/schedules/schedules.service';
 import { SchedulesService } from './services/schedules/schedules.service';
+import { GoogleRunService } from './services/google/run/run.service';
+import { GoogleRunTaskFactory } from './services/google/run/tasks/run-task.factory';
+import { GoogleSpeakTaskRunnerService } from './services/google/run/tasks/speak/speak-task-runner.service';
 
 // Multilingual
 import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
@@ -110,6 +117,8 @@ export class DynamicLocaleId extends String {
     ScheduleEventTaskEditorDirective,
     SpeakTaskEditorComponent,
     LaunchUrlTaskEditorComponent,
+    LaunchCourseWorkTaskEditorComponent,
+    LaunchCourseMeetTaskEditorComponent,
     DragDropDirective
   ],
   imports: [
@@ -153,9 +162,14 @@ export class DynamicLocaleId extends String {
     AppSettingsService,
     TranslateService,
     UserStateFactory,
-    GoogleClassroomsService,
+    GoogleCoursesService,
+    GoogleCourseWorkService,
+    GoogleCourseWorkTopicsService,
     GoogleGuardedRouteService,
     GoogleSchedulesService,
+    GoogleRunService,
+    GoogleRunTaskFactory,
+    GoogleSpeakTaskRunnerService,
     SchedulesService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService,multi: true},
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },

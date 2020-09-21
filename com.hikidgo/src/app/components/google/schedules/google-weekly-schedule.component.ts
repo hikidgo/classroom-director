@@ -60,14 +60,6 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
     this._subs.push(subTitle);
 
     this.refresh();
-
-    // const subTranslate = this._translate.get('SPEAK', {name: this.userContext.user.profile.given_name}).subscribe((res: string) => {
-    //     var msg = new SpeechSynthesisUtterance();
-    //     msg.lang = this._translate.currentLang;
-    //     msg.text = res;
-    //     window.speechSynthesis.speak(msg);
-    // });
-    // this._subs.push(subTranslate);
   }
   
   refresh() {
@@ -78,98 +70,6 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
     this._svc.get(this.begin)
       .subscribe(
         x => {
-
-          x.schedule.monday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 510,
-            title: "Class Meeting (Live)",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for your morning meeting!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.tuesday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 510,
-            title: "Class Meeting (Live)",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for your morning meeting!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.wednesday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 510,
-            title: "Class Meeting (Live)",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for your morning meeting!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.thursday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 510,
-            title: "Class Meeting (Live)",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for your morning meeting!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.friday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 510,
-            title: "Class Meeting (Live)",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for your morning meeting!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.monday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 540,
-            title: "Phonics",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for phonics live!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.tuesday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 540,
-            title: "Phonics",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for phonics live!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.wednesday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 540,
-            title: "Phonics",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for phonics live!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.thursday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 540,
-            title: "Phonics",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for phonics live!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-          x.schedule.friday.events.push(<ScheduleEvent>{
-            uniqueId: uuidv4(),
-            time: 540,
-            title: "Phonics",
-            tasks: [
-              { uniqueId: uuidv4(), title: "Speak", key: "speak", configuration: JSON.stringify({ text: "It's time for phonics live!" }) },
-              { uniqueId: uuidv4(), title: "Launch", key: "launchUrl", configuration: JSON.stringify({ url: "https://www.google.com" }) }
-            ]
-          });
-
           this.ref = x.ref;
           this.schedule = x.schedule;
           this.refreshing = false;

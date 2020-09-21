@@ -3,6 +3,8 @@ import { Type } from '@angular/core';
 import { ScheduleEventTaskEditorComponent } from './schedule-event-task-editor.component';
 import { SpeakTaskEditorComponent } from './speak/speak-task-editor.component';
 import { LaunchUrlTaskEditorComponent } from './launch-url/launch-url-task-editor.component';
+import { LaunchCourseWorkTaskEditorComponent } from './launch-course-work/launch-course-work-task-editor.component';
+import { LaunchCourseMeetTaskEditorComponent } from './launch-course-meet/launch-course-meet-task-editor.component';
 
 @Directive({
   selector: '[schedule-event-task-editor-host]',
@@ -24,6 +26,12 @@ export class ScheduleEventTaskEditorDirective {
         break;
       case "launchUrl":
         component = LaunchUrlTaskEditorComponent;
+        break;
+      case "launchCourseWork":
+        component = LaunchCourseWorkTaskEditorComponent;
+        break;
+      case "launchCourseVideo":
+        component = LaunchCourseMeetTaskEditorComponent;
         break;
     }
 

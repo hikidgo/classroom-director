@@ -23,6 +23,18 @@ export class SchedulesService {
 
         return weeks;
     }
+
+    getCurrent(): WeeklyScheduleReference {
+        var today = moment().startOf('day');
+
+        while(today.day() != 0){
+            today.subtract(1, 'days');
+        }
+
+        return <WeeklyScheduleReference>{
+            begin : today.toDate()
+        };
+    }
 }
 
 export class WeeklyScheduleReference {
