@@ -3,10 +3,21 @@ orbs:
   node: circleci/node@3.0.0
 jobs:
   build:
+    docker:
+      - image: circleci/node:6-browsers
+    working_directory: ~/repo
     steps:
       - checkout
       - run: cd com.hikidgo
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
       - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
       - run: ng build --prod --build-optimizer --no-progress
       - store_artifacts:
-          path: ~/work/
+          path: dist
