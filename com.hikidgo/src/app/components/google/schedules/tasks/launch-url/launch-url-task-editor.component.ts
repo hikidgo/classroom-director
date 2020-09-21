@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LaunchUrlTaskConfiguration } from 'src/app/services/google/run/tasks/launch-url/launch-url-task-runner.service';
 import { ScheduleEventTask } from 'src/app/services/schedules/schedules.service';
 import { ScheduleEventTaskEditorComponent, ScheduleEventTaskCommitResponse } from '../schedule-event-task-editor.component'
 
@@ -36,7 +37,7 @@ export class LaunchUrlTaskEditorComponent implements ScheduleEventTaskEditorComp
 
     this.frm.setValue({
       title: this.task.title,
-      url: config.url
+      url: config.url ?? ""
     });
   }
 
@@ -64,7 +65,4 @@ export class LaunchUrlTaskEditorComponent implements ScheduleEventTaskEditorComp
 
 }
 
-export interface LaunchUrlTaskConfiguration {
-  url: string;
-}
 

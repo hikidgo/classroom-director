@@ -74,6 +74,9 @@ import { SchedulesService } from './services/schedules/schedules.service';
 import { GoogleRunService } from './services/google/run/run.service';
 import { GoogleRunTaskFactory } from './services/google/run/tasks/run-task.factory';
 import { GoogleSpeakTaskRunnerService } from './services/google/run/tasks/speak/speak-task-runner.service';
+import { GoogleLaunchUrlTaskRunnerService } from './services/google/run/tasks/launch-url/launch-url-task-runner.service';
+import { GoogleLaunchCourseWorkTaskRunnerService } from './services/google/run/tasks/launch-course-work/launch-course-work-task-runner.service';
+
 
 // Multilingual
 import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
@@ -170,6 +173,8 @@ export class DynamicLocaleId extends String {
     GoogleRunService,
     GoogleRunTaskFactory,
     GoogleSpeakTaskRunnerService,
+    GoogleLaunchUrlTaskRunnerService,
+    GoogleLaunchCourseWorkTaskRunnerService,
     SchedulesService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService,multi: true},
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: false } },

@@ -9,6 +9,7 @@ import { GoogleCourseWorkTopicsService } from 'src/app/services/google/course-wo
 import { GoogleCourse, GoogleCourseWork, GoogleCourseWorkTopic } from 'src/app/services/google/data';
 import { ScheduleEventTask } from 'src/app/services/schedules/schedules.service';
 import { ScheduleEventTaskEditorComponent, ScheduleEventTaskCommitResponse } from '../schedule-event-task-editor.component'
+import { LaunchCourseWorkTaskConfiguration } from 'src/app/services/google/run/tasks/launch-course-work/launch-course-work-task-runner.service';
 
 @Component({
   selector: 'app-launch-course-work-task-editor',
@@ -193,12 +194,5 @@ export class LaunchCourseWorkTaskEditorComponent implements ScheduleEventTaskEdi
     };
   }
 
-}
-
-export interface LaunchCourseWorkTaskConfiguration {
-  courseId: string;
-  courseWorkId: string;
-  courseWorkTopicId : string;
-  isSpeakDescription: string;
 }
 

@@ -9,6 +9,7 @@ import { DailySchedule, ScheduleEvent, WeeklySchedule } from 'src/app/services/s
 import { GoogleFileRef, GoogleSchedulesService } from 'src/app/services/google/schedules/schedules.service';
 import { Exception, UnauthorizedException } from 'src/app/interceptors/http-interceptor.service';
 import { v4 as uuidv4 } from 'uuid';
+import { GoogleRunService } from 'src/app/services/google/run/run.service';
 
 @Component({
   selector: 'app-google-weekly-schedule',
@@ -37,7 +38,8 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
     private _titleService: TitleService,
     private _userStateFactory: UserStateFactory,
     private _translate: TranslateService,
-    private _svc : GoogleSchedulesService) { 
+    private _svc : GoogleSchedulesService,
+    private _runService : GoogleRunService) { 
 
       this._route.params.forEach((params: Params) => {
         this.begin =new Date(parseInt(params['begin']));
@@ -101,6 +103,8 @@ export class GoogleWeeklyScheduleComponent implements OnInit, OnDestroy {
         this.saving = false;
         this.ref = x.ref;
         this.refresh();
+        this._runService.stop();
+        this._runService.start();
       },
       ex => {
         this.savingException = ex;

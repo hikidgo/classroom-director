@@ -9,12 +9,13 @@ export class GoogleSpeakTaskRunnerService implements GoogleTaskRunnerService {
 
     }
 
-    execute(context: RunTaskContext) {
+    async execute(context: RunTaskContext) : Promise<boolean> {
         const config = <SpeakTaskConfiguration>JSON.parse(context.task.configuration);
         const msg = new SpeechSynthesisUtterance();
         msg.lang = this._translate.currentLang;
         msg.text = config.text;
         window.speechSynthesis.speak(msg);
+        return true;
     }
 }
 

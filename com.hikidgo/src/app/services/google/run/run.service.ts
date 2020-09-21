@@ -6,10 +6,12 @@ import { DailySchedule, SchedulesService, WeeklySchedule, WeeklyScheduleReferenc
 import { GoogleSchedulesService } from '../schedules/schedules.service';
 import * as moment from 'moment';
 import { GoogleRunTaskFactory, RunTaskContext } from './tasks/run-task.factory';
+import { TranslateService } from '@ngx-translate/core';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class GoogleRunService {
-    public running$: BehaviorSubject<boolean>;
+    public runningId$: BehaviorSubject<string>;
     public schedule$: BehaviorSubject<WeeklySchedule>;
     public exception$: BehaviorSubject<Exception>;
     public reference$: BehaviorSubject<WeeklyScheduleReference>;
@@ -17,23 +19,29 @@ export class GoogleRunService {
     constructor(
         private _scheduleService: SchedulesService,
         private _googleSchedulesService: GoogleSchedulesService,
-        private _runTaskFactory : GoogleRunTaskFactory,
+        private _runTaskFactory: GoogleRunTaskFactory,
+        private _translate: TranslateService,
         private _router: Router) {
-            this.running$ = new BehaviorSubject<boolean>(false);
-            this.schedule$ = new BehaviorSubject<WeeklySchedule>(null);
-            this.exception$ = new BehaviorSubject<Exception>(null);
-            this.reference$ = new BehaviorSubject<WeeklyScheduleReference>(null);
+        this.runningId$ = new BehaviorSubject<string>(null);
+        this.schedule$ = new BehaviorSubject<WeeklySchedule>(null);
+        this.exception$ = new BehaviorSubject<Exception>(null);
+        this.reference$ = new BehaviorSubject<WeeklyScheduleReference>(null);
     }
 
     start() {
-        this.running$.next(true);
+        if(this.runningId$.value != null){
+            return;
+        }
+        
+        const runningId = uuidv4();
+        this.runningId$.next(runningId);
         const reference = this._scheduleService.getCurrent();
         this._googleSchedulesService.get(reference.begin)
             .subscribe(
                 x => {
                     this.reference$.next(reference);
                     this.schedule$.next(x.schedule);
-                    this.checkForEvent();
+                    new Promise(resolve => { this.checkForEvent(runningId) });
                 },
                 ex => {
                     this.exception$.next(ex);
@@ -44,11 +52,11 @@ export class GoogleRunService {
             );
     }
 
-    checkForEvent() {
-        if (!this.running$.value) {
+    async checkForEvent(runningId : string): Promise<void> {
+        if (this.runningId$.value !== runningId) {
             return;
         }
-        
+
         const now = moment();
         const weeklySchedule = this.schedule$.value;
         const reference = this.reference$.value;
@@ -84,56 +92,73 @@ export class GoogleRunService {
                 break;
         }
 
-        const nowMin = now.clone().subtract(5, 'minutes');
-        const nowMax = now.clone().add(5, 'minutes');
+        const nowMin = now.clone().subtract(3, 'minutes');
+        const nowMax = now.clone().add(10, 'minutes');
 
         const events = schedule.events.filter(event => {
             const time = moment().startOf('day').add(event.time, 'minutes');
 
-            if(nowMin.isBefore(time) && nowMax.isAfter(time)){
+            if (nowMin.isBefore(time) && nowMax.isAfter(time)) {
                 return true;
             }
             return false;
         });
 
-        var sessionStateKey = reference.begin.getTime()+".state";
-        var sessionState : string[] = JSON.parse(sessionStorage.getItem(sessionStateKey) ?? "[]");
+        var sessionStateKey = reference.begin.getTime() + ".state";
+        var sessionState: string[] = JSON.parse(sessionStorage.getItem(sessionStateKey) ?? "[]");
 
-        events.forEach(e => {
-            e.tasks.forEach(t =>{
+        for (var i = 0; i < events.length; i++) {
+            const e = events[i];
+            if (sessionState.indexOf(e.uniqueId) < 0) {
+                const subTranslate = this._translate.get('SPEAK').subscribe((res: string) => {
+                    var msg = new SpeechSynthesisUtterance();
+                    msg.lang = this._translate.currentLang;
+                    msg.text = res;
+                    window.speechSynthesis.speak(msg);
+                });
+                sessionState.push(e.uniqueId);
+
+                setTimeout(() => {
+                    subTranslate.unsubscribe();
+                }, 1000);
+            }
+            for (var j = 0; j < e.tasks.length; j++) {
+                const t = e.tasks[j];
                 var svc = this._runTaskFactory.create(t.key);
-                
-                try{
-                    if(sessionState.indexOf(t.uniqueId) < 0){
-                        svc.execute(<RunTaskContext>{
+
+                try {
+                    if (sessionState.indexOf(t.uniqueId) < 0) {
+                        var result = await svc.execute(<RunTaskContext>{
                             weeklyScheduleRef: reference,
                             weeklySchedule: weeklySchedule,
                             dailySchedule: schedule,
                             event: e,
                             task: t
                         });
-                        sessionState.push(t.uniqueId);
+                        if (result == true) {
+                            sessionState.push(t.uniqueId);
+                        }
                     }
 
-                }catch(e){
+                } catch (e) {
                     this.exception$.next(e);
                 }
-            });
-        });
-        
+            };
+        };
+
         sessionStorage.setItem(sessionStateKey, JSON.stringify(sessionState));
 
-        if (this.running$.value) {
+        if (this.runningId$.value !== runningId) {
             const me = this;
-            setTimeout(() => {
-                me.checkForEvent();
-            }, 1000 * 60);
+            setTimeout(async () => {
+                me.checkForEvent(runningId);
+            }, 1000 * 30);
         }
     }
 
     stop() {
         this.schedule$.next(null);
         this.reference$.next(null);
-        this.running$.next(false);
+        this.runningId$.next(null);
     }
 }
