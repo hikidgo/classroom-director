@@ -16,8 +16,8 @@ steps:
     npm install -g @angular/cli
     npm install
     ng build --prod
-    rm "dist/portal/settings.json"
-    mv "dist/portal/settings.prod.json" "dist/portal/settings.json"
+    rm "dist/hikidgo/settings.json"
+    mv "dist/hikidgo/settings.prod.json" "dist/hikidgo/settings.json"
   displayName: 'npm install and build'
   
 # copy output to build artifacts
@@ -25,7 +25,7 @@ steps:
 - task: CopyFiles@2
   displayName: Copy Files
   inputs:
-    SourceFolder: 'dist/portal'
+    SourceFolder: 'dist/hikidgo'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/app'
 
 # publish build artifacts
