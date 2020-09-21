@@ -56,7 +56,7 @@ export class GoogleRunService {
         if (this.runningId$.value !== runningId) {
             return;
         }
-
+        console.log("still cycling...");
         const now = moment();
         const weeklySchedule = this.schedule$.value;
         const reference = this.reference$.value;
@@ -128,13 +128,15 @@ export class GoogleRunService {
 
                 try {
                     if (sessionState.indexOf(t.uniqueId) < 0) {
-                        var result = await svc.execute(<RunTaskContext>{
+                        const ctx = <RunTaskContext>{
                             weeklyScheduleRef: reference,
                             weeklySchedule: weeklySchedule,
                             dailySchedule: schedule,
                             event: e,
                             task: t
-                        });
+                        };
+                        console.log(ctx);
+                        var result = await svc.execute(ctx);
                         if (result == true) {
                             sessionState.push(t.uniqueId);
                         }
@@ -148,7 +150,7 @@ export class GoogleRunService {
 
         sessionStorage.setItem(sessionStateKey, JSON.stringify(sessionState));
 
-        if (this.runningId$.value !== runningId) {
+        if (this.runningId$.value === runningId) {
             const me = this;
             setTimeout(async () => {
                 me.checkForEvent(runningId);
