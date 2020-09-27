@@ -41,5 +41,6 @@
     "SPEAK_DESCRIPTION": "Speak Description",
     "COURSE" : "Course",
     "COURSE_WORK_TOPIC" : "Course Work Topic",
-    "COURSE_WORK" : "Course Work"
+    "COURSE_WORK" : "Course Work",
+    "INVALID_URL" : "Invalid URL"
 }

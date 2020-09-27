@@ -56,7 +56,7 @@ export class GoogleRunService {
         if (this.runningId$.value !== runningId) {
             return;
         }
-        console.log("still cycling...");
+
         const now = moment();
         const weeklySchedule = this.schedule$.value;
         const reference = this.reference$.value;
@@ -92,13 +92,13 @@ export class GoogleRunService {
                 break;
         }
 
-        const nowMin = now.clone().subtract(3, 'minutes');
-        const nowMax = now.clone().add(10, 'minutes');
 
         const events = schedule.events.filter(event => {
             const time = moment().startOf('day').add(event.time, 'minutes');
+            const timeMin = time.clone().subtract(30, 'seconds');
+            const timeMax = time.clone().add(10, 'minutes');
 
-            if (nowMin.isBefore(time) && nowMax.isAfter(time)) {
+            if (timeMin.isBefore(now) && timeMax.isAfter(now)) {
                 return true;
             }
             return false;
@@ -135,7 +135,6 @@ export class GoogleRunService {
                             event: e,
                             task: t
                         };
-                        console.log(ctx);
                         var result = await svc.execute(ctx);
                         if (result == true) {
                             sessionState.push(t.uniqueId);

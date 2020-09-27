@@ -10,8 +10,9 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-
+  isChrome : boolean = false;
   constructor() {
+    this.isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
   }
 
 }

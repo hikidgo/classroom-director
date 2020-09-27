@@ -41,5 +41,6 @@
     "SPEAK_DESCRIPTION": "Hablar descripción",
     "COURSE" : "Curso",
     "COURSE_WORK_TOPIC" : "Tema de trabajo del curso",
-    "COURSE_WORK" : "Trabajo del curso"
+    "COURSE_WORK" : "Trabajo del curso",
+    "INVALID_URL" : "URL invalida"
 }

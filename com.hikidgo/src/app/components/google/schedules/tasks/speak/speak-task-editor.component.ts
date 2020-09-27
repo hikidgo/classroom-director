@@ -36,8 +36,8 @@ export class SpeakTaskEditorComponent implements ScheduleEventTaskEditorComponen
     const config = <SpeakTaskConfiguration>JSON.parse(this.task.configuration);
 
     this.frm.setValue({
-      title: this.task.title,
-      text: config.text
+      title: this.task.title ?? "",
+      text: config.text ?? ""
     });
   }
 
